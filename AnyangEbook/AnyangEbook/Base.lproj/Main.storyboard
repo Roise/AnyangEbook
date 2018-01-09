@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hU3-wh-cOy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,31 +21,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebookbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="OYa-kt-oWc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebookbg" translatesAutoresizingMaskIntoConstraints="NO" id="OYa-kt-oWc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="titlebar.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDe-ue-OUt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="titlebar" translatesAutoresizingMaskIntoConstraints="NO" id="jDe-ue-OUt">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="titlebg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mQa-2C-xV1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="titlebg" translatesAutoresizingMaskIntoConstraints="NO" id="mQa-2C-xV1">
                                 <rect key="frame" x="157" y="0.0" width="61" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="G2m-iI-QoM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="G2m-iI-QoM">
                                 <rect key="frame" x="0.0" y="47" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-U9-b4P">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-U9-b4P">
                                 <rect key="frame" x="0.0" y="177" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-04-eUz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-04-eUz">
                                 <rect key="frame" x="0.0" y="313" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="EV9-ah-G2X">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="EV9-ah-G2X">
                                 <rect key="frame" x="0.0" y="443" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -55,13 +55,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+            <point key="canvasLocation" x="738" y="79"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="szA-pp-LC9">
+            <objects>
+                <navigationController id="hU3-wh-cOy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFX-Hw-VHd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PkW-zX-GbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-68" y="79"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ebookbg.png" width="320" height="480"/>
-        <image name="ebooklistbg.png" width="320" height="143"/>
-        <image name="titlebar.png" width="768" height="50"/>
-        <image name="titlebg.png" width="111" height="38"/>
+        <image name="ebookbg" width="320" height="480"/>
+        <image name="ebooklistbg" width="320" height="143"/>
+        <image name="titlebar" width="768" height="50"/>
+        <image name="titlebg" width="111" height="38"/>
     </resources>
 </document>
