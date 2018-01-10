@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
 //     public static String BOOK_INFORMATION_URL = "http://azine.kr/m/_api/apiEbook.php?code=107&page=1&cnt=9&gid=0&t=";
     

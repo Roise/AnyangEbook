@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MainViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -52,23 +52,80 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JqC-fs-3dL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="738" y="79"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--SettingViewController-->
+        <scene sceneID="7Fl-ga-Nru">
+            <objects>
+                <viewController title="SettingViewController" id="Yj6-Zl-6qE" customClass="AYSettingViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EPo-7s-wLY"/>
+                        <viewControllerLayoutGuide type="bottom" id="39A-Xw-756"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gGq-gF-D6B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KS6-cI-7QF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2153" y="79"/>
+        </scene>
+        <!--Navigation Manager-->
         <scene sceneID="szA-pp-LC9">
             <objects>
-                <navigationController id="hU3-wh-cOy" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="hU3-wh-cOy" customClass="AYNavigationManager" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFX-Hw-VHd">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9VK-15-2w8"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkW-zX-GbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-68" y="79"/>
+        </scene>
+        <!--QRViewController-->
+        <scene sceneID="bLN-61-Yj3">
+            <objects>
+                <viewController title="QRViewController" id="qO9-Lz-yeL" customClass="AYQRViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="veu-Gk-udg"/>
+                        <viewControllerLayoutGuide type="bottom" id="KK1-ET-nhc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vVw-FG-IOz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iK7-We-Spg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1447" y="79"/>
+        </scene>
+        <!--PDFViewController-->
+        <scene sceneID="iHQ-Jy-33V">
+            <objects>
+                <viewController title="PDFViewController" id="qBs-Rf-FAq" customClass="AYPDFViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T3g-p5-Ztm"/>
+                        <viewControllerLayoutGuide type="bottom" id="fMH-gc-CH3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6hJ-su-4jA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ski-mR-nw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1446" y="731"/>
         </scene>
     </scenes>
     <resources>
