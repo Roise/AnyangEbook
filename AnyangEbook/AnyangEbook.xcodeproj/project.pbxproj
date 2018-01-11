@@ -10,7 +10,6 @@
 		1827E28E2005E342001907B5 /* AYQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E28D2005E342001907B5 /* AYQRViewController.swift */; };
 		1827E2902005E383001907B5 /* AYSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E28F2005E383001907B5 /* AYSettingViewController.swift */; };
 		1827E2942005E3CB001907B5 /* AYPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E2932005E3CB001907B5 /* AYPDFViewController.swift */; };
-		1827E2962005E47C001907B5 /* AYNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E2952005E47C001907B5 /* AYNavigationManager.swift */; };
 		183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E6C4C2004BEF80084A54A /* MainViewController.swift */; };
 		71820C781DFEF9B000F018D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71820C771DFEF9B000F018D6 /* AppDelegate.swift */; };
 		71820C7D1DFEF9B000F018D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71820C7B1DFEF9B000F018D6 /* Main.storyboard */; };
@@ -22,7 +21,6 @@
 		1827E28D2005E342001907B5 /* AYQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYQRViewController.swift; path = ViewController/AYQRViewController.swift; sourceTree = "<group>"; };
 		1827E28F2005E383001907B5 /* AYSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYSettingViewController.swift; path = ViewController/AYSettingViewController.swift; sourceTree = "<group>"; };
 		1827E2932005E3CB001907B5 /* AYPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYPDFViewController.swift; path = ViewController/AYPDFViewController.swift; sourceTree = "<group>"; };
-		1827E2952005E47C001907B5 /* AYNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYNavigationManager.swift; path = Manager/AYNavigationManager.swift; sourceTree = "<group>"; };
 		183E6C4C2004BEF80084A54A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
 		71820C741DFEF9B000F018D6 /* AnyangEbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyangEbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71820C771DFEF9B000F018D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		183E6C482004BC650084A54A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				1827E2952005E47C001907B5 /* AYNavigationManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -223,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */,
-				1827E2962005E47C001907B5 /* AYNavigationManager.swift in Sources */,
 				71820C781DFEF9B000F018D6 /* AppDelegate.swift in Sources */,
 				1827E2942005E3CB001907B5 /* AYPDFViewController.swift in Sources */,
 				1827E28E2005E342001907B5 /* AYQRViewController.swift in Sources */,

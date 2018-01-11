@@ -12,7 +12,7 @@
         <!--MainViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -33,22 +33,54 @@
                                 <rect key="frame" x="157" y="0.0" width="61" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="G2m-iI-QoM">
-                                <rect key="frame" x="0.0" y="47" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-U9-b4P">
-                                <rect key="frame" x="0.0" y="177" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-04-eUz">
-                                <rect key="frame" x="0.0" y="313" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ebooklistbg" translatesAutoresizingMaskIntoConstraints="NO" id="EV9-ah-G2X">
-                                <rect key="frame" x="0.0" y="443" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYw-nh-Rb8">
+                                <rect key="frame" x="311" y="9" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="테이블"/>
+                                <connections>
+                                    <action selector="selectTableMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXp-9g-o9l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf4-PL-bsV">
+                                <rect key="frame" x="250" y="9" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="컬렉션"/>
+                                <connections>
+                                    <action selector="selectCollectionMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m8a-bI-BMY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRe-HP-doF">
+                                <rect key="frame" x="53" y="617" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="QR"/>
+                                <connections>
+                                    <action selector="pushQRMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t6t-61-aHo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOj-gD-cgG">
+                                <rect key="frame" x="161" y="617" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="선물하기"/>
+                                <connections>
+                                    <action selector="modalShareMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vWY-Qg-0Qs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyZ-2v-Eia">
+                                <rect key="frame" x="24" y="8" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="전체"/>
+                                <connections>
+                                    <action selector="modalAllMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ryd-gc-Cf0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN9-9l-RVy">
+                                <rect key="frame" x="296" y="617" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="설정"/>
+                                <connections>
+                                    <action selector="pushSettingMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wbx-63-SOH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -56,12 +88,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="738" y="79"/>
+            <point key="canvasLocation" x="438" y="-385"/>
         </scene>
         <!--SettingViewController-->
         <scene sceneID="7Fl-ga-Nru">
             <objects>
-                <viewController title="SettingViewController" id="Yj6-Zl-6qE" customClass="AYSettingViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" title="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yj6-Zl-6qE" customClass="AYSettingViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EPo-7s-wLY"/>
                         <viewControllerLayoutGuide type="bottom" id="39A-Xw-756"/>
@@ -69,6 +101,16 @@
                     <view key="view" contentMode="scaleToFill" id="gGq-gF-D6B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ap9-Db-tMD">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="popPrev:" destination="Yj6-Zl-6qE" eventType="touchUpInside" id="LGD-tM-Zkj"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
@@ -76,25 +118,25 @@
             </objects>
             <point key="canvasLocation" x="2153" y="79"/>
         </scene>
-        <!--Navigation Manager-->
+        <!--Navigation Controller-->
         <scene sceneID="szA-pp-LC9">
             <objects>
-                <navigationController navigationBarHidden="YES" id="hU3-wh-cOy" customClass="AYNavigationManager" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="hU3-wh-cOy" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFX-Hw-VHd">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9VK-15-2w8"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="a8b-Ra-uT5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkW-zX-GbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-68" y="79"/>
+            <point key="canvasLocation" x="-263" y="-384"/>
         </scene>
         <!--QRViewController-->
         <scene sceneID="bLN-61-Yj3">
             <objects>
-                <viewController title="QRViewController" id="qO9-Lz-yeL" customClass="AYQRViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRViewControllerID" title="QRViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qO9-Lz-yeL" customClass="AYQRViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="veu-Gk-udg"/>
                         <viewControllerLayoutGuide type="bottom" id="KK1-ET-nhc"/>
@@ -102,17 +144,27 @@
                     <view key="view" contentMode="scaleToFill" id="vVw-FG-IOz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odi-5q-vA9">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="popPrev:" destination="qO9-Lz-yeL" eventType="touchUpInside" id="tTX-IY-mbn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iK7-We-Spg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1447" y="79"/>
+            <point key="canvasLocation" x="1159" y="-289"/>
         </scene>
         <!--PDFViewController-->
         <scene sceneID="iHQ-Jy-33V">
             <objects>
-                <viewController title="PDFViewController" id="qBs-Rf-FAq" customClass="AYPDFViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PDFViewController" title="PDFViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBs-Rf-FAq" customClass="AYPDFViewController" customModule="AnyangEbook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T3g-p5-Ztm"/>
                         <viewControllerLayoutGuide type="bottom" id="fMH-gc-CH3"/>
@@ -125,12 +177,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ski-mR-nw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="731"/>
+            <point key="canvasLocation" x="1358" y="783"/>
         </scene>
     </scenes>
     <resources>
         <image name="ebookbg" width="320" height="480"/>
-        <image name="ebooklistbg" width="320" height="143"/>
         <image name="titlebar" width="768" height="50"/>
         <image name="titlebg" width="111" height="38"/>
     </resources>
