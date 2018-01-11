@@ -20,8 +20,10 @@ class MainViewController: UIViewController {
         
     }
     
-//     public static String BOOK_INFORMATION_URL = "http://azine.kr/m/_api/apiEbook.php?code=107&page=1&cnt=9&gid=0&t=";
-            
+    @IBOutlet weak var collectionView: UICollectionView!
+    //     public static String BOOK_INFORMATION_URL = "http://azine.kr/m/_api/apiEbook.php?code=107&page=1&cnt=9&gid=0&t=";
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,9 +61,14 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func selectCollectionMode(_ sender: Any) {
+        tableView.isHidden = true
+        collectionView.isHidden = false
     }
     
     @IBAction func selectTableMode(_ sender: Any) {
+        tableView.isHidden = false
+        collectionView.isHidden = true
+        
     }
     
     @IBAction func pushSettingMenu(_ sender: Any) {
@@ -81,4 +88,5 @@ class MainViewController: UIViewController {
     }
     
 }
+
 
