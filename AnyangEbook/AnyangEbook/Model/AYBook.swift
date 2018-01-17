@@ -9,7 +9,7 @@
 import Foundation
 
 struct Book {
-    let categoryCode: Int
+    let categoryCode: String
     let carTagCode: String
     let title: String
     let infoShelf: String
@@ -21,7 +21,7 @@ struct Book {
     let authorInfo: String
     let dateInfo: String
     let badge: String
-    let chapter: Array<Dictionary<String, String>>
+    let chapter: Array<Dictionary<String, Any>>
     let ebookQRURL: String
     let ebookQR2URL: String
     let bookType: String

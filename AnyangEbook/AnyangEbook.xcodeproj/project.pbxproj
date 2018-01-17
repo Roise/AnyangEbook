@@ -18,6 +18,7 @@
 		187077E2200758140045E0D4 /* AYBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E1200758140045E0D4 /* AYBookAPI.swift */; };
 		187077E4200758A40045E0D4 /* AYEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E3200758A40045E0D4 /* AYEndPoint.swift */; };
 		18E04295200845C10065CA35 /* AYBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E04294200845C10065CA35 /* AYBook.swift */; };
+		18F01720200DE7680096F365 /* AYBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0171F200DE7680096F365 /* AYBookListViewModel.swift */; };
 		71820C781DFEF9B000F018D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71820C771DFEF9B000F018D6 /* AppDelegate.swift */; };
 		71820C7D1DFEF9B000F018D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71820C7B1DFEF9B000F018D6 /* Main.storyboard */; };
 		71820C7F1DFEF9B000F018D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71820C7E1DFEF9B000F018D6 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		187077E1200758140045E0D4 /* AYBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYBookAPI.swift; sourceTree = "<group>"; };
 		187077E3200758A40045E0D4 /* AYEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYEndPoint.swift; path = Provider/AYEndPoint.swift; sourceTree = "<group>"; };
 		18E04294200845C10065CA35 /* AYBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBook.swift; path = Model/AYBook.swift; sourceTree = "<group>"; };
+		18F0171F200DE7680096F365 /* AYBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListViewModel.swift; path = Model/AYBookListViewModel.swift; sourceTree = "<group>"; };
 		71820C741DFEF9B000F018D6 /* AnyangEbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyangEbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71820C771DFEF9B000F018D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71820C7C1DFEF9B000F018D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				18E04294200845C10065CA35 /* AYBook.swift */,
+				18F0171F200DE7680096F365 /* AYBookListViewModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F01720200DE7680096F365 /* AYBookListViewModel.swift in Sources */,
 				183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */,
 				187077E2200758140045E0D4 /* AYBookAPI.swift in Sources */,
 				71820C781DFEF9B000F018D6 /* AppDelegate.swift in Sources */,

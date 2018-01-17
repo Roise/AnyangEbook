@@ -19,14 +19,21 @@ class MainViewController: UIViewController {
         case pdf
         
     }
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
-    //     public static String BOOK_INFORMATION_URL = "http://azine.kr/m/_api/apiEbook.php?code=107&page=1&cnt=9&gid=0&t=";
     @IBOutlet weak var tableView: UITableView!
+    
+    public var bookListViewModel: AYBookListViewModel?
+    public var endPoint = EndPoint.init(pageNumber: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
+        
+        bookListViewModel?.request(pageNumber: 1, completionHandler: {[unowned self] (isSuccess) in
+            print("\(String(describing: self.bookListViewModel?.bookList))")
+        })
         // Do any additional setup after loading the view, typically from a nib.
     }
 

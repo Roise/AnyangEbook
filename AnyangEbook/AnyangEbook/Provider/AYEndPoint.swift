@@ -8,26 +8,21 @@
 
 import Foundation
 
-enum CRUDMethod {
-    case get
-    case post
-    case put
-    case update
-}
-
 struct EndPoint {
-    
+
     private let baseURL = "http://azine.kr/m/_api/apiEbook.php?code=107&"
-    var pageNumber = 0
-    var path: String {
-            return baseURL + "page=" + "\(pageNumber)" + "&cnt=9&grid=0&t="
-    }
+    public var pageNumber = 0
+    
+    private var path: String {
+            return baseURL
+        }
+    
 }
 
 extension EndPoint {
     
-    var URLString: String {
-        return path
+    public var URLString: String {
+        return path + "page=" + String(pageNumber) + "&cnt=9&grid=0&t="
     }
     
 }
