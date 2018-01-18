@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         var viewController = UIViewController()
         
         switch menu {
-            
+        
         case .setting:
             viewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! AYSettingViewController
             
