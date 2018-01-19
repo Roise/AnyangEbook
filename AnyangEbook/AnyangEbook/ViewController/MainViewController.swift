@@ -8,15 +8,11 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-    
+class MainViewController: UIViewController, UITableViewDelegate, UICollectionViewDelegate, UITableViewDataSource, UICollectionViewDataSource {
+
     public enum Menu {
         
-        case setting
-        
-        case QR
-        
-        case pdf
+        case setting, QR, pdf
         
     }
 
@@ -29,11 +25,18 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        tableView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
+        collectionView.register(UINib.init(nibName: "AYBookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collectionCell")
+                
         bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
         
-        bookListViewModel?.request(pageNumber: 1, completionHandler: {[unowned self] (isSuccess) in
-            print("\(String(describing: self.bookListViewModel?.bookList))")
-        })
+        self.request()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -63,6 +66,49 @@ class MainViewController: UIViewController {
         
     }
 
+// MARK - Request
+    func request() {
+        bookListViewModel?.request(pageNumber: 1, completionHandler: {[unowned self] (isSuccess) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        })
+    }
+    
+// MARK - TableView Method
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? AYBookListTableViewCell
+        
+        cell?.setup(book: (bookListViewModel?.bookList[indexPath.row])!)
+        
+        return cell!
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (bookListViewModel?.bookList.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+// MARK - CollectionView Method
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? AYBookCollectionViewCell
+        
+        return cell!
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    
 // MARK - Button Method
     @IBAction func modalAllMenu(_ sender: Any) {
     }
