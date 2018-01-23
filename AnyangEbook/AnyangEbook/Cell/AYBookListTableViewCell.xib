@@ -19,6 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_ipad" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-iF-LDH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4i-3k-gUg">
                         <rect key="frame" x="15" y="10" width="70" height="94.5"/>
                         <constraints>
@@ -32,13 +35,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.93333333330000001" green="0.2274509804" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="u4i-3k-gUg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="42D-yq-DS1"/>
                     <constraint firstItem="u4i-3k-gUg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="4dP-IH-iwr"/>
                     <constraint firstItem="X0d-J7-bS3" firstAttribute="leading" secondItem="u4i-3k-gUg" secondAttribute="trailing" constant="20" id="69G-El-7ft"/>
+                    <constraint firstAttribute="bottom" secondItem="yUY-iF-LDH" secondAttribute="bottom" id="9i7-pX-DwF"/>
                     <constraint firstAttribute="trailingMargin" secondItem="X0d-J7-bS3" secondAttribute="trailing" constant="50" id="B5u-JF-2jt"/>
                     <constraint firstAttribute="bottom" secondItem="u4i-3k-gUg" secondAttribute="bottom" constant="10" id="UYn-Ph-sd4"/>
+                    <constraint firstItem="yUY-iF-LDH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XGg-tD-HcV"/>
+                    <constraint firstItem="yUY-iF-LDH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="h27-Ge-KWD"/>
+                    <constraint firstAttribute="trailing" secondItem="yUY-iF-LDH" secondAttribute="trailing" id="hde-pR-Frp"/>
                     <constraint firstItem="X0d-J7-bS3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="ii6-9E-8JP"/>
                 </constraints>
             </tableViewCellContentView>
@@ -49,4 +55,7 @@
             <point key="canvasLocation" x="44" y="-172.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bg_ipad" width="768" height="1024"/>
+    </resources>
 </document>

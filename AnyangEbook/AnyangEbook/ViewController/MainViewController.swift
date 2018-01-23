@@ -8,34 +8,45 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDelegate, UICollectionViewDelegate, UITableViewDataSource, UICollectionViewDataSource {
+public enum CellType: Int {
+    case list, collection
+}
+
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     public enum Menu {
-        
         case setting, QR, pdf
-        
     }
-
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var listView: UITableView!
+    @IBOutlet weak var collectionTableView: UITableView!
+    
+    fileprivate let itemsPerRow: CGFloat = 3
+    fileprivate let sectionInsets = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate var bookAPI = AYBookAPI(listPage: 1, listCount: 9, collectionPage: 1, collectionCount: 12, isListEndPage: false, isCollectionEndPage: false)
     
     public var bookListViewModel: AYBookListViewModel?
-    public var endPoint = EndPoint.init(pageNumber: 1)
+    public var bookCollectionViewModel: AYBookCollectionViewModel?
+    public var endPoint = EndPoint.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        listView.delegate = self
+        listView.dataSource = self
         
-        tableView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
-        collectionView.register(UINib.init(nibName: "AYBookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collectionCell")
-                
+        collectionTableView.delegate = self
+        collectionTableView.dataSource = self
+    
+        listView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
+        collectionTableView.register(UINib.init(nibName: "AYCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "collectionCell")
+        
         bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
+        bookCollectionViewModel = AYBookCollectionViewModel.init(endPoint: endPoint)
         
-        self.request()
+        self.requestTable(bookAPI)
+        collectionTableView.isHidden = true
+        listView.isHidden = false
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -67,61 +78,123 @@ class MainViewController: UIViewController, UITableViewDelegate, UICollectionVie
     }
 
 // MARK - Request
-    func request() {
-        bookListViewModel?.request(pageNumber: 1, completionHandler: {[unowned self] (isSuccess) in
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-        })
+    func requestTable(_ api: AYBookAPI) {
+        
+        if api.isListEndPage == false {
+            bookListViewModel?.request(pageNumber: api.listPage, itemCount: api.listCount, completionHandler: { [unowned self](isSuccess) in
+                DispatchQueue.main.async {
+                    if isSuccess {
+                    self.listView.reloadData()
+                    }
+                    
+                }
+            })
+        }
+    }
+    
+     func requestCollection(_ api: AYBookAPI) {
+        if api.isCollectionEndPage == false {
+            bookCollectionViewModel?.request(pageNumber: api.collectionPage, itemCount: api.collectionCount, completionHandler: {[unowned self] (isSuccess) in
+                DispatchQueue.main.async {
+                    
+                    if isSuccess {
+                        self.collectionTableView.reloadData()
+                    }
+                    
+                }
+            })
+        }
     }
     
 // MARK - TableView Method
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? AYBookListTableViewCell
-        
-        cell?.setup(book: (bookListViewModel?.bookList[indexPath.row])!)
-        
+        if tableView == listView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? AYBookListTableViewCell
+                cell?.setup(book: (bookListViewModel?.bookList[indexPath.row])!)
+            return cell!
+
+        } else {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "collectionCell", for: indexPath) as? AYCollectionTableViewCell
+            cell?.setup(books: (bookCollectionViewModel?.bookCollection[indexPath.row])!)
         return cell!
-        
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (bookListViewModel?.bookList.count)!
+        
+        if tableView == listView {
+            return (bookListViewModel?.bookList.count)!
+        } else {
+            return (bookCollectionViewModel?.bookCollection.count)!
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        if tableView == listView {
+            return 100
+        }
+            return 200
     }
     
-// MARK - CollectionView Method
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-  
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? AYBookCollectionViewCell
+    func moreList(_ type: CellType, page: Int, count: Int ) {
         
-        return cell!
+        switch type {
+    
+        case .list:
+            requestTable(bookAPI)
+       
+        case .collection:
+        requestCollection(bookAPI)
         
+        default: break
+            
+        }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
-    }
-    
-// MARK - Button Method
+
+func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+//        let sourceViewHeight = scrollView.contentOffset.y + scrollView.frame.size.height
+//        let contentSize = scrollView.contentSize.height + CGFloat(100.0)
+//
+//        if sourceViewHeight < contentSize {
+//            switch scrollView {
+//
+//            case listView:
+//             requestTable(bookAPI.increaseParameter(type: .list))
+//
+//            case collectionTableView:
+//                requestCollection(bookAPI.increaseParameter(type: .collection))
+//
+//            default:
+//                break
+//            }
+//
+//        }
+        
+}
+
+    // MARK - Button Method
     @IBAction func modalAllMenu(_ sender: Any) {
+    
     }
     
     @IBAction func selectCollectionMode(_ sender: Any) {
-        tableView.isHidden = true
-        collectionView.isHidden = false
+        
+        listView.isHidden = true
+        collectionTableView.isHidden = false
+
+        if bookCollectionViewModel?.bookCollection.count == 0 {
+            requestCollection(bookAPI)
+        }
+        
     }
     
     @IBAction func selectTableMode(_ sender: Any) {
-        tableView.isHidden = false
-        collectionView.isHidden = true
         
+        listView.isHidden = false
+        collectionTableView.isHidden = true
+
     }
     
     @IBAction func pushSettingMenu(_ sender: Any) {

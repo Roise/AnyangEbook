@@ -15,29 +15,34 @@ enum CRUDMethod {
     case update
 }
 
+//TODO max page
+
+
 class AYNetworkManager {
     
     static let sharedInstance = AYNetworkManager()
     private var task = URLSessionDownloadTask()
-    let session = URLSession.shared
+    private let session = URLSession.shared
+    
+    public var isLoading = false
     
     public func requestBookList(url: String, complete:  @escaping (Array<Dictionary<String, Any>>?, Bool, Error?) -> Swift.Void)  {
         
         //Todo CRUDMethod
         
-        print(url)
-        task = session.downloadTask(with: URL.init(string: url)!, completionHandler: { (location, response, error) in
+        isLoading = true
+        task = session.downloadTask(with: URL(string: url)!, completionHandler: {[unowned self] (location, response, error) in
             
             if location != nil {
                 let data: Data! = try? Data.init(contentsOf: location!)
                 
                 do {
                     let responseObject = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableLeaves) as AnyObject
-                    print("responseObject \(responseObject)")
                     let response = responseObject["searchResult"] as AnyObject
                     let results = response as? Array<Dictionary<String, Any>>
                     
                     complete(results, true, nil)
+                    self.isLoading = false
                     
                 } catch {
                     

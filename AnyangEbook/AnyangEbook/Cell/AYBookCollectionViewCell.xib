@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,20 +26,25 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cQZ-sZ-klq">
                         <rect key="frame" x="0.0" y="0.0" width="159" height="193"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWV-gw-Ozf">
-                        <rect key="frame" x="0.0" y="153" width="159" height="40"/>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWV-gw-Ozf">
+                        <rect key="frame" x="0.0" y="150" width="159" height="43"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOY-3c-oHG">
-                                <rect key="frame" x="58" y="11" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOY-3c-oHG">
+                                <rect key="frame" x="3" y="3" width="153" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="azG-vY-6uw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="H0S-lW-E0s"/>
+                            <constraint firstAttribute="bottom" secondItem="GOY-3c-oHG" secondAttribute="bottom" id="KvU-B9-DoU"/>
+                            <constraint firstItem="GOY-3c-oHG" firstAttribute="leading" secondItem="ZWV-gw-Ozf" secondAttribute="leading" constant="3" id="VNq-9p-8wS"/>
+                            <constraint firstItem="GOY-3c-oHG" firstAttribute="top" secondItem="ZWV-gw-Ozf" secondAttribute="top" constant="3" id="fIk-Hm-jcn"/>
+                            <constraint firstAttribute="trailing" secondItem="GOY-3c-oHG" secondAttribute="trailing" constant="3" id="vAH-4X-CBe"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -49,6 +59,10 @@
                 <constraint firstAttribute="bottom" secondItem="ZWV-gw-Ozf" secondAttribute="bottom" id="i2k-wS-3ag"/>
             </constraints>
             <size key="customSize" width="159" height="193"/>
+            <connections>
+                <outlet property="thumbnail" destination="cQZ-sZ-klq" id="3dt-GB-KgO"/>
+                <outlet property="title" destination="GOY-3c-oHG" id="8AL-DK-b73"/>
+            </connections>
             <point key="canvasLocation" x="88.5" y="125.5"/>
         </collectionViewCell>
     </objects>
