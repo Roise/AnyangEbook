@@ -3,4 +3,5 @@ use_frameworks!
 
 target 'AnyangEbook' do
 pod 'SDWebImage', '~> 4.0'  
+pod "UXMPDFKit"
 end

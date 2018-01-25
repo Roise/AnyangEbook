@@ -9,14 +9,32 @@
 import UIKit
 import SDWebImage
 
+class UIButtonSubClassing: UIButton {
+    var horizontalIndex = 0
+    var cellIndex: Int = 0
+}
+
 class AYCollectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var leftCell: UIView!
     @IBOutlet weak var midCell: UIView!
     @IBOutlet weak var rightCell: UIView!
     
+    @IBOutlet weak var leftBtn: UIButtonSubClassing!
+    @IBOutlet weak var midBtn: UIButtonSubClassing!
+    @IBOutlet weak var rightBtn: UIButtonSubClassing!
+    public var buttons = [UIButton]()
+    
     public func setup(books: [Book]) {
+     
         let bookCells = [leftCell, midCell, rightCell]
+        leftBtn.horizontalIndex = 0
+        midBtn.horizontalIndex = 1
+        rightBtn.horizontalIndex = 2
+        
+        buttons.append(leftBtn)
+        buttons.append(midBtn)
+        buttons.append(rightBtn)
         
         for i in 0...2 {
             self.setupBookCell(cell: bookCells[i]!, book: books[i])
@@ -36,6 +54,7 @@ class AYCollectionTableViewCell: UITableViewCell {
     }
     
     func setupBookCell(cell: UIView, book: Book) {
+       
         var backGroundImageView: UIImageView?
         var title: UILabel?
         
@@ -50,6 +69,7 @@ class AYCollectionTableViewCell: UITableViewCell {
         backGroundImageView?.sd_setImage(with: URL.init(string: book.thumbnailURL)!, placeholderImage: nil, options: .continueInBackground) { (image, error, cachetype, url) in
             cell.addSubview(backGroundImageView!)
             cell.addSubview(title!)
-        }    
+        }
+        
     }
 }

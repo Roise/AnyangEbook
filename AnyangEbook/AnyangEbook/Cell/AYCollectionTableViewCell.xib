@@ -24,26 +24,53 @@
                     </imageView>
                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Sil-sf-a35">
                         <rect key="frame" x="35" y="41" width="90" height="131"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kB9-hB-MJ3" customClass="UIButtonSubClassing" customModule="AnyangEbook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="131"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kB9-hB-MJ3" secondAttribute="trailing" id="0Db-MZ-0FE"/>
                             <constraint firstAttribute="width" constant="90" id="7VK-Dg-PaZ"/>
+                            <constraint firstItem="kB9-hB-MJ3" firstAttribute="top" secondItem="Sil-sf-a35" secondAttribute="top" id="aXs-lU-RQt"/>
+                            <constraint firstItem="kB9-hB-MJ3" firstAttribute="leading" secondItem="Sil-sf-a35" secondAttribute="leading" id="e21-vc-PhX"/>
                             <constraint firstAttribute="height" constant="131" id="iHe-P7-U7I"/>
+                            <constraint firstAttribute="bottom" secondItem="kB9-hB-MJ3" secondAttribute="bottom" id="vYQ-QH-mpk"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzI-LA-ou2">
                         <rect key="frame" x="145" y="41" width="90" height="131"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYJ-0K-q9o" customClass="UIButtonSubClassing" customModule="AnyangEbook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="131"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="PYJ-0K-q9o" firstAttribute="leading" secondItem="ZzI-LA-ou2" secondAttribute="leading" id="2Gd-ON-Uap"/>
                             <constraint firstAttribute="width" constant="90" id="OJu-jd-Gxf"/>
+                            <constraint firstAttribute="bottom" secondItem="PYJ-0K-q9o" secondAttribute="bottom" id="PgS-2O-PeB"/>
+                            <constraint firstAttribute="trailing" secondItem="PYJ-0K-q9o" secondAttribute="trailing" id="bcw-eU-Asj"/>
+                            <constraint firstItem="PYJ-0K-q9o" firstAttribute="top" secondItem="ZzI-LA-ou2" secondAttribute="top" id="lR2-mv-nUu"/>
                             <constraint firstAttribute="height" constant="131" id="sCB-vW-JjF"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-1N-qet">
                         <rect key="frame" x="255" y="41" width="90" height="131"/>
+                        <subviews>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiP-V2-gFi" customClass="UIButtonSubClassing" customModule="AnyangEbook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="131"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="eiP-V2-gFi" secondAttribute="bottom" id="38U-bj-XkC"/>
                             <constraint firstAttribute="width" constant="90" id="3og-Fu-Ssf"/>
+                            <constraint firstItem="eiP-V2-gFi" firstAttribute="top" secondItem="KE2-1N-qet" secondAttribute="top" id="Fq6-CJ-Y8G"/>
+                            <constraint firstItem="eiP-V2-gFi" firstAttribute="leading" secondItem="KE2-1N-qet" secondAttribute="leading" id="GM0-l3-nac"/>
                             <constraint firstAttribute="height" constant="131" id="Nif-9P-eol"/>
+                            <constraint firstAttribute="trailing" secondItem="eiP-V2-gFi" secondAttribute="trailing" id="ybE-dG-BRR"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -61,11 +88,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="leftBtn" destination="kB9-hB-MJ3" id="q9b-dE-Ac5"/>
                 <outlet property="leftCell" destination="Sil-sf-a35" id="bPa-DA-7LX"/>
+                <outlet property="midBtn" destination="PYJ-0K-q9o" id="5r8-yJ-Ie7"/>
                 <outlet property="midCell" destination="ZzI-LA-ou2" id="SNg-2D-dtN"/>
+                <outlet property="rightBtn" destination="eiP-V2-gFi" id="vK2-cT-iaa"/>
                 <outlet property="rightCell" destination="KE2-1N-qet" id="tua-f4-UBg"/>
             </connections>
-            <point key="canvasLocation" x="-117.5" y="-18"/>
+            <point key="canvasLocation" x="-523" y="-271"/>
         </tableViewCell>
     </objects>
     <resources>

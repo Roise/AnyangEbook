@@ -117,7 +117,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "collectionCell", for: indexPath) as? AYCollectionTableViewCell
             cell?.setup(books: (bookCollectionViewModel?.bookCollection[indexPath.row])!)
-        return cell!
+            cell?.leftBtn.addTarget(self, action: #selector(pushItemToDetailView(_:)), for: .touchUpInside)
+            cell?.midBtn.addTarget(self, action: #selector(pushItemToDetailView(_:)), for: .touchUpInside)
+            cell?.rightBtn.addTarget(self, action: #selector(pushItemToDetailView(_:)), for: .touchUpInside)
+        
+            cell?.leftBtn.cellIndex = indexPath.row
+            cell?.rightBtn.cellIndex = indexPath.row
+            cell?.midBtn.cellIndex = indexPath.row
+            
+            return cell!
         }
     }
     
@@ -135,6 +143,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             return 100
         }
             return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
+        
+        switch tableView {
+        case listView:
+                detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
+                self.navigationController?.pushViewController(detailViewController!, animated: true)
+        case collectionTableView:
+            
+            break
+        default:
+            break
+        }
+    }
+    
+    @objc func pushItemToDetailView(_ sender: UIButtonSubClassing) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
+        
+        detailViewController?.book = bookCollectionViewModel?.bookCollection[sender.cellIndex][sender.horizontalIndex]
+        
+        self.navigationController?.pushViewController(detailViewController!, animated: true)
     }
     
     func moreList(_ type: CellType, page: Int, count: Int ) {
