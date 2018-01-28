@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UXMPDFKit
 
 public enum CellType: Int {
     case list, collection
@@ -151,7 +152,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch tableView {
         case listView:
                 detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
-                self.navigationController?.pushViewController(detailViewController!, animated: true)
+                let fileURL = bookListViewModel?.bookList[indexPath.row].fileURL
+                let splitURL = fileURL?.split(separator: "/")
+                let pdfFileName = splitURL![((splitURL?.endIndex)!-1)]
+                
+                AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!, fileName: String(pdfFileName), completionHandler: { (data, true, error) in
+                    let path = Bundle.main.bundlePath + pdfFileName
+                    let document = try! PDFDocument(filePath: path, password: nil)
+                    let pdf = PDFViewController(document: document)
+                    
+                    self.navigationController?.pushViewController(pdf, animated: true)
+            
+            })
+                //self.navigationController?.pushViewController(detailViewController!, animated: true)
         case collectionTableView:
             
             break

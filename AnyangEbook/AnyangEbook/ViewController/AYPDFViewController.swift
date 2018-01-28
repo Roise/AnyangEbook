@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import UXMPDFKit
 
-class AYPDFViewController: UIViewController {
+class AYPDFViewController: PDFViewController {
 
+    var document: PDFDocument?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
     }
 

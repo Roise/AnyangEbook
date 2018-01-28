@@ -47,53 +47,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titlebg" translatesAutoresizingMaskIntoConstraints="NO" id="pDu-eg-81P">
                                         <rect key="frame" x="116" y="14" width="111" height="38"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyZ-2v-Eia">
-                                        <rect key="frame" x="10" y="20" width="44" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Uln-t9-mHp"/>
-                                            <constraint firstAttribute="height" constant="30" id="VZ2-lH-mgq"/>
-                                        </constraints>
-                                        <state key="normal" title="전체"/>
-                                        <connections>
-                                            <action selector="modalAllMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ryd-gc-Cf0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYw-nh-Rb8">
-                                        <rect key="frame" x="255" y="20" width="39" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="39" id="GcJ-5k-o8f"/>
-                                            <constraint firstAttribute="height" constant="30" id="z4i-rD-Kuw"/>
-                                        </constraints>
-                                        <state key="normal" title="테이블"/>
-                                        <connections>
-                                            <action selector="selectTableMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXp-9g-o9l"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf4-PL-bsV">
-                                        <rect key="frame" x="304" y="20" width="39" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="PGi-uj-fer"/>
-                                        </constraints>
-                                        <state key="normal" title="컬렉션"/>
-                                        <connections>
-                                            <action selector="selectCollectionMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m8a-bI-BMY"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="nf4-PL-bsV" secondAttribute="trailing" id="34R-nh-M4u"/>
-                                    <constraint firstItem="iyZ-2v-Eia" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="top" constant="20" id="6Wk-sK-Lhs"/>
                                     <constraint firstAttribute="trailing" secondItem="mUK-fi-VE9" secondAttribute="trailing" constant="-17" id="7Pn-qk-WLJ"/>
                                     <constraint firstItem="pDu-eg-81P" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="top" constant="14" id="B17-Ag-1gt"/>
-                                    <constraint firstItem="nf4-PL-bsV" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="top" constant="20" id="DEl-Zj-21a"/>
                                     <constraint firstItem="mUK-fi-VE9" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="top" constant="-22" id="HCY-ah-kNe"/>
-                                    <constraint firstItem="nf4-PL-bsV" firstAttribute="leading" secondItem="pYw-nh-Rb8" secondAttribute="trailing" constant="10" id="Ik6-Gb-Vb2"/>
                                     <constraint firstAttribute="bottom" secondItem="mUK-fi-VE9" secondAttribute="bottom" id="aiu-EX-axm"/>
                                     <constraint firstItem="mUK-fi-VE9" firstAttribute="leading" secondItem="9wk-eJ-wUg" secondAttribute="leading" constant="-17" id="ci2-OH-7Qv"/>
-                                    <constraint firstItem="pYw-nh-Rb8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9wk-eJ-wUg" secondAttribute="leading" constant="20" symbolic="YES" id="fkX-zI-fYT"/>
-                                    <constraint firstItem="iyZ-2v-Eia" firstAttribute="leading" secondItem="9wk-eJ-wUg" secondAttribute="leading" constant="10" id="hD0-T0-cJW"/>
-                                    <constraint firstItem="pYw-nh-Rb8" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="top" constant="20" id="jVD-oJ-Hno"/>
                                     <constraint firstItem="pDu-eg-81P" firstAttribute="centerX" secondItem="mUK-fi-VE9" secondAttribute="centerX" id="sEF-i8-Rh5"/>
                                     <constraint firstAttribute="height" constant="60" id="sme-Jd-S9b"/>
                                 </constraints>
