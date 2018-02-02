@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import UXMPDFKit
+import M13PDFKit
 
 public enum CellType: Int {
     case list, collection
 }
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
     public enum Menu {
         case setting, QR, pdf
     }
@@ -70,7 +70,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             viewController = self.storyboard?.instantiateViewController(withIdentifier: "QRViewControllerID") as! AYQRViewController
             
         case .pdf:
-            viewController = self.storyboard?.instantiateViewController(withIdentifier: "PDFViewController") as! AYPDFViewController
+            break
+//            viewController = self.storyboard?.instantiateViewController(withIdentifier: "PDFViewController") as! AYPDFViewController
             
         }
         
@@ -156,15 +157,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let splitURL = fileURL?.split(separator: "/")
                 let pdfFileName = splitURL![((splitURL?.endIndex)!-1)]
                 
-                AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!, fileName: String(pdfFileName), completionHandler: { (data, true, error) in
-                    let path = Bundle.main.bundlePath + pdfFileName
-                    let document = try! PDFDocument(filePath: path, password: nil)
-                    let pdf = PDFViewController(document: document)
+                
+                AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!, fileName: String(pdfFileName), completionHandler: { (data, fileURL, error) in
                     
-                    self.navigationController?.pushViewController(pdf, animated: true)
-            
-            })
-                //self.navigationController?.pushViewController(detailViewController!, animated: true)
+                    //var viewer: PDFKBasicPDFViewer = segue.destinationViewController as PDFKBasicPDFViewer
+                    DispatchQueue.main.async {
+                        let document: PDFKDocument = PDFKDocument(contentsOfFile: fileURL.path, password: nil)
+                        let viewer = PDFKBasicPDFViewer.init(document: document)!
+                        viewer.loadDocument(document)
+                        viewer.enableBookmarks = true
+                        viewer.enableThumbnailSlider = true
+                        
+                        self.addChildViewController(viewer)
+                        self.navigationController?.pushViewController(viewer, animated: true)
+                    }
+                    
+                    
+                })
+        
         case collectionTableView:
             
             break
@@ -256,6 +266,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
     @IBAction func modalShareMenu(_ sender: Any) {
     
     }
+   
     
 }
 

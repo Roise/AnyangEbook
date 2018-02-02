@@ -13,6 +13,7 @@
 		1827E2902005E383001907B5 /* AYSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E28F2005E383001907B5 /* AYSettingViewController.swift */; };
 		1827E2942005E3CB001907B5 /* AYPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E2932005E3CB001907B5 /* AYPDFViewController.swift */; };
 		183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E6C4C2004BEF80084A54A /* MainViewController.swift */; };
+		185AF162202452E700555792 /* M13PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185AF163202452E700555792 /* M13PDFKit.framework */; };
 		187077E2200758140045E0D4 /* AYBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E1200758140045E0D4 /* AYBookAPI.swift */; };
 		187077E4200758A40045E0D4 /* AYEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E3200758A40045E0D4 /* AYEndPoint.swift */; };
 		1876D7C62011C840006C84A8 /* AYBookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 		1827E28F2005E383001907B5 /* AYSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYSettingViewController.swift; path = ViewController/AYSettingViewController.swift; sourceTree = "<group>"; };
 		1827E2932005E3CB001907B5 /* AYPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYPDFViewController.swift; path = ViewController/AYPDFViewController.swift; sourceTree = "<group>"; };
 		183E6C4C2004BEF80084A54A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
+		185AF163202452E700555792 /* M13PDFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = M13PDFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		187077E1200758140045E0D4 /* AYBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYBookAPI.swift; sourceTree = "<group>"; };
 		187077E3200758A40045E0D4 /* AYEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYEndPoint.swift; path = Provider/AYEndPoint.swift; sourceTree = "<group>"; };
 		1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListTableViewCell.swift; path = Cell/AYBookListTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 		188F85212015B9250058C1FD /* AYCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AYCollectionTableViewCell.xib; path = Cell/AYCollectionTableViewCell.xib; sourceTree = "<group>"; };
 		188F85242015B9500058C1FD /* AYBookCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookCollectionViewModel.swift; path = Model/AYBookCollectionViewModel.swift; sourceTree = "<group>"; };
 		18B0851F2018203600088EAA /* AYDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYDetailViewController.swift; path = ViewController/AYDetailViewController.swift; sourceTree = "<group>"; };
+		18CC906B20200D3A00332A3C /* PDFReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PDFReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E04294200845C10065CA35 /* AYBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBook.swift; path = Model/AYBook.swift; sourceTree = "<group>"; };
 		18F0171F200DE7680096F365 /* AYBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListViewModel.swift; path = Model/AYBookListViewModel.swift; sourceTree = "<group>"; };
 		71820C741DFEF9B000F018D6 /* AnyangEbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyangEbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185AF162202452E700555792 /* M13PDFKit.framework in Frameworks */,
 				8FD8852FCC6514CA567536D9 /* Pods_AnyangEbook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +152,8 @@
 		25A636C78CD8B47032A197D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185AF163202452E700555792 /* M13PDFKit.framework */,
+				18CC906B20200D3A00332A3C /* PDFReader.framework */,
 				EE0C970300FA8A7CC2F6D853 /* Pods_AnyangEbook.framework */,
 			);
 			name = Frameworks;
@@ -287,13 +293,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AnyangEbook/Pods-AnyangEbook-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/M13PDFKit/M13PDFKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/UXMPDFKit/UXMPDFKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TTOpenInAppActivity/TTOpenInAppActivity.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13PDFKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UXMPDFKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTOpenInAppActivity.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

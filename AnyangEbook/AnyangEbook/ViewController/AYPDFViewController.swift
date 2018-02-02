@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import UXMPDFKit
 
-class AYPDFViewController: PDFViewController {
-
-    var document: PDFDocument?
+class AYPDFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

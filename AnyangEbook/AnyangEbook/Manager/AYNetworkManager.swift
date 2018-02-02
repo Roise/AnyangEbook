@@ -15,36 +15,58 @@ enum CRUDMethod {
     case update
 }
 
-//TODO max page
-
-
 class AYNetworkManager {
     
     static let sharedInstance = AYNetworkManager()
     private var sessionTask = URLSessionDataTask()
-    private var downloadTask = URLSessionDownloadTask()
-    private let session = URLSession.shared
+    public var downloadTask = URLSessionDownloadTask()
+    public let session = URLSession.shared
     
     public var isLoading = false
     
-    public func downloadPDF(url: String, fileName: String, completionHandler: @escaping(Data, Bool, Error?) -> Swift.Void) {
+    public func downloadPDF(url: String, fileName: String, completionHandler: @escaping(Data, URL, Error?) -> Swift.Void) {
         
         downloadTask = session.downloadTask(with: URL.init(string: url)!, completionHandler: { (url, response, error) in
-            let path = Bundle.main.bundlePath
-            
+                let mainBundle = Bundle.main.bundlePath
             do {
                 let data = try Data.init(contentsOf: url!)
-                FileManager.default.createFile(atPath: path + fileName, contents: data, attributes: nil)
-                completionHandler(data, true, error)
-            
+                let fileURL = self.createdDataPathURL(fileName)!
+                print(fileURL.path)
+                print(mainBundle + fileName)
+                if FileManager.default.createFile(atPath: mainBundle + fileName, contents: data, attributes: nil) {
+                    completionHandler(data, URL.init(fileURLWithPath: mainBundle + fileName), error)
+                } else {
+                    print("error")
+                }
             } catch {
                 
             }
-            
-            
         })
         
         downloadTask.resume()
+    }
+    
+    private func createdDataPathURL(_ fileName: String) -> URL? {
+        
+        let bundleID = Bundle.main.bundleIdentifier
+        let fileManager = FileManager.default
+        var dirPath: URL?
+        var appSupportDir = [URL]()
+        
+        appSupportDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        if appSupportDir.count > 0
+        {
+            dirPath = appSupportDir[0].appendingPathComponent(bundleID!)
+        }
+        
+        let filePath = (dirPath?.path)! + "/" + fileName
+        do {
+            try fileManager.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
+            return URL.init(fileURLWithPath: filePath)
+        } catch {
+            return nil
+        }
     }
     
     public func requestBookList(url: String, complete:  @escaping (Array<Dictionary<String, Any>>?, Bool, Error?) -> Swift.Void)  {
@@ -61,6 +83,7 @@ class AYNetworkManager {
                     let results = response as? Array<Dictionary<String, Any>>
                     
                     complete(results, true, nil)
+                    
                     self.isLoading = false
                     
                 } catch {
@@ -70,6 +93,6 @@ class AYNetworkManager {
             })
         
         sessionTask.resume()
-    
 }
+    
 }

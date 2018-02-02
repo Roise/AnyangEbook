@@ -1,17 +1,20 @@
 PODS:
+  - M13PDFKit (1.0.2):
+    - TTOpenInAppActivity
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
-  - UXMPDFKit (0.7.2)
+  - TTOpenInAppActivity (1.0)
 
 DEPENDENCIES:
+  - M13PDFKit (= 1.0.2)
   - SDWebImage (~> 4.0)
-  - UXMPDFKit
 
 SPEC CHECKSUMS:
+  M13PDFKit: bc121a55ccb8ddfcf3982f1a5a8592b9f492cd73
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
-  UXMPDFKit: 3cd146f9129a1a33160b1c0f33dd70ecafe60ccf
+  TTOpenInAppActivity: c2218fe419d03ddd4ffb1f07d52d66e0d213d0d4
 
-PODFILE CHECKSUM: 02c67fd9bd8d6bcc8e7465cbc7a36d0dadf48393
+PODFILE CHECKSUM: 5b2d50613b834f11330a7583de94c7f5edc9caf2
 
 COCOAPODS: 1.4.0
