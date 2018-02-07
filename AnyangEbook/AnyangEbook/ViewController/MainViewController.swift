@@ -13,7 +13,7 @@ public enum CellType: Int {
     case list, collection
 }
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AYNetworkManagerDelegate {
     
     public enum Menu {
         case setting, QR, pdf
@@ -35,13 +35,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         listView.delegate = self
         listView.dataSource = self
-        
         collectionTableView.delegate = self
         collectionTableView.dataSource = self
-    
+        AYNetworkManager.sharedInstance.delegate = self
         listView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         collectionTableView.register(UINib.init(nibName: "AYCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "collectionCell")
-        
+    
         bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
         bookCollectionViewModel = AYBookCollectionViewModel.init(endPoint: endPoint)
         
@@ -118,11 +117,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "collectionCell", for: indexPath) as? AYCollectionTableViewCell
+            
             cell?.setup(books: (bookCollectionViewModel?.bookCollection[indexPath.row])!)
             cell?.leftBtn.addTarget(self, action: #selector(pushItemToDetailView(_:)), for: .touchUpInside)
             cell?.midBtn.addTarget(self, action: #selector(pushItemToDetailView(_:)), for: .touchUpInside)
             cell?.rightBtn.addTarget(self, action: #selector(pushItemToDetailView(_:)), for: .touchUpInside)
-        
             cell?.leftBtn.cellIndex = indexPath.row
             cell?.rightBtn.cellIndex = indexPath.row
             cell?.midBtn.cellIndex = indexPath.row
@@ -153,28 +152,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch tableView {
         case listView:
                 detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
-                let fileURL = bookListViewModel?.bookList[indexPath.row].fileURL
-                let splitURL = fileURL?.split(separator: "/")
-                let pdfFileName = splitURL![((splitURL?.endIndex)!-1)]
-                
-                
-                AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!, fileName: String(pdfFileName), completionHandler: { (data, fileURL, error) in
-                    
-                    //var viewer: PDFKBasicPDFViewer = segue.destinationViewController as PDFKBasicPDFViewer
-                    DispatchQueue.main.async {
-                        let document: PDFKDocument = PDFKDocument(contentsOfFile: fileURL.path, password: nil)
-                        let viewer = PDFKBasicPDFViewer.init(document: document)!
-                        viewer.loadDocument(document)
-                        viewer.enableBookmarks = true
-                        viewer.enableThumbnailSlider = true
-                        
-                        self.addChildViewController(viewer)
-                        self.navigationController?.pushViewController(viewer, animated: true)
-                    }
-                    
-                    
-                })
-        
+                AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!)
         case collectionTableView:
             
             break
@@ -228,7 +206,7 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
 }
 
-    // MARK - Button Method
+// MARK - Button Method
     @IBAction func modalAllMenu(_ sender: Any) {
     
     }
@@ -266,8 +244,27 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
     @IBAction func modalShareMenu(_ sender: Any) {
     
     }
-   
     
+// MARK - AYNetworkManager delegate Method
+    
+    func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64) {
+        print(didWriteBytes, " ", totalBytesExpectedToWrite)
+    }
+    
+    func finishDownloadData(to location: URL) {
+                            DispatchQueue.main.async {
+                                let document: PDFKDocument = PDFKDocument(contentsOfFile: fileURL, password: nil)
+                                let viewer = PDFKBasicPDFViewer.init(document: document)!
+                                viewer.loadDocument(document)
+                                viewer.enableBookmarks = true
+                                viewer.enableThumbnailSlider = true
+        
+                                self.addChildViewController(viewer)
+                                self.navigationController?.pushViewController(viewer, animated: true)
+                            }
+
+    }
+       
 }
 
 
