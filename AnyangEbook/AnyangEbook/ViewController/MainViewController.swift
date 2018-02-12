@@ -14,6 +14,9 @@ public enum CellType: Int {
 }
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AYNetworkManagerDelegate {
+    func finishDownloadData(at name: String, to location: URL) {
+        
+    }
     
     public enum Menu {
         case setting, QR, pdf
@@ -251,20 +254,22 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(didWriteBytes, " ", totalBytesExpectedToWrite)
     }
     
-    func finishDownloadData(to location: URL) {
+    func finishDownloadData(to location: String) {
+        print(location)
                             DispatchQueue.main.async {
-                                let document: PDFKDocument = PDFKDocument(contentsOfFile: fileURL, password: nil)
+                                let document: PDFKDocument = PDFKDocument(contentsOfFile: location, password: nil)
                                 let viewer = PDFKBasicPDFViewer.init(document: document)!
                                 viewer.loadDocument(document)
-                                viewer.enableBookmarks = true
-                                viewer.enableThumbnailSlider = true
-        
+                                viewer.enableBookmarks = false
+                                viewer.enableThumbnailSlider = false
+
                                 self.addChildViewController(viewer)
                                 self.navigationController?.pushViewController(viewer, animated: true)
                             }
 
+
     }
-       
+    
 }
 
 

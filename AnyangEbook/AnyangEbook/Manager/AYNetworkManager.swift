@@ -17,7 +17,7 @@ enum CRUDMethod {
 
 protocol AYNetworkManagerDelegate: NSObjectProtocol {
     func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64)
-    func finishDownloadData(to location: URL)
+    func finishDownloadData(to location: String)
 }
 
 class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
@@ -27,6 +27,7 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     public var downloadTask = URLSessionDownloadTask()
     public var session: URLSession?
     public var isLoading = false
+    public var finishedFliePath: String?
     
     public var delegate: AYNetworkManagerDelegate?
  
@@ -41,30 +42,20 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     
     public func downloadPDF(url: String) {
         
-        downloadTask = (session?.downloadTask(with: URLRequest.init(url: URL.init(string: url)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)))!
+        downloadTask = (session?.downloadTask(with: URLRequest.init(url: URL.init(string: url)!,
+                                                                    cachePolicy: .useProtocolCachePolicy,
+                                                                    timeoutInterval: 60)))!
+        
         let fileURL = url
         let splitURL = fileURL.split(separator: "/")
         let pdfFileName = splitURL[((splitURL.endIndex)-1)]
-        let mainBundle = Bundle.main.bundlePath
         
-            do {
-                let data = try Data.init(contentsOf: URL.init(string: url)!)
-                //let fileURL = self.createdDataPathURL(fileName)!
-                
-                if FileManager.default.createFile(atPath: mainBundle + pdfFileName, contents: data, attributes: nil) {
-                    
-                    //completionHandler(data, URL.init(fileURLWithPath: mainBundle + fileName), error)
-                } else {
-                    print("error")
-                }
-            } catch {
-
-            }
+        finishedFliePath = createdDataDirectoryPath()! + pdfFileName
         
         downloadTask.resume()
     }
     
-    private func createdDataPathURL(_ fileName: String) -> URL? {
+    private func createdDataDirectoryPath() -> String? {
         
         let bundleID = Bundle.main.bundleIdentifier
         let fileManager = FileManager.default
@@ -78,17 +69,18 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
             dirPath = appSupportDir[0].appendingPathComponent(bundleID!)
         }
         
-        let filePath = (dirPath?.path)! + "/" + fileName
-        do {
+        let filePath = (dirPath?.path)!
+        do {            
             try fileManager.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
-            return URL.init(fileURLWithPath: filePath)
+            
+            return filePath
         } catch {
             return nil
         }
     }
     
     public func requestBookList(url: String, complete:  @escaping (Array<Dictionary<String, Any>>?, Bool, Error?) -> Swift.Void)  {
-        
+     
         //Todo CRUDMethod
         
         isLoading = true
@@ -116,9 +108,32 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
-        if delegate != nil {
-            delegate?.finishDownloadData(to: location)
+//        do {
+//            let data = try Data.init(contentsOf: URL.init(string: url)!)
+//            //let fileURL = self.createdDataPathURL(fileName)!
+//
+//            if FileManager.default.createFile(atPath: mainBundle + pdfFileName, contents: data, attributes: nil) {
+//
+//            } else {
+//                print("error")
+//            }
+//        } catch {
+//
+//        }
+        
+        do
+        {
+            let data = try Data.init(contentsOf: location)
+            FileManager.default.createFile(atPath: finishedFliePath!, contents: data, attributes: nil)
+            print(finishedFliePath)
+            delegate?.finishDownloadData(to: finishedFliePath!)
+            
+        } catch let error {
+            print("copying error")
+            print(error)
         }
+        
+        
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
