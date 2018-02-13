@@ -13,6 +13,7 @@ class AYBookListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var downloadRatio: UILabel!
     
     func setup(book: Book) {
 

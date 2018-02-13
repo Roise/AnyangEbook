@@ -14,9 +14,8 @@ public enum CellType: Int {
 }
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AYNetworkManagerDelegate {
-    func finishDownloadData(at name: String, to location: URL) {
-        
-    }
+
+    @IBOutlet weak var progressView: UIProgressView!
     
     public enum Menu {
         case setting, QR, pdf
@@ -36,22 +35,38 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        listView.delegate = self
-        listView.dataSource = self
-        collectionTableView.delegate = self
-        collectionTableView.dataSource = self
-        AYNetworkManager.sharedInstance.delegate = self
         listView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         collectionTableView.register(UINib.init(nibName: "AYCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "collectionCell")
     
         bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
         bookCollectionViewModel = AYBookCollectionViewModel.init(endPoint: endPoint)
         
-        self.requestTable(bookAPI)
         collectionTableView.isHidden = true
         listView.isHidden = false
         
+        // default is darkGray
+        SKActivityIndicator.spinnerColor(UIColor.darkGray)
+        
+        // default is black
+        SKActivityIndicator.statusTextColor(UIColor.black)
+        
+        // default is System Font
+        let myFont = UIFont(name: "AvenirNext-DemiBold", size: 18)
+        SKActivityIndicator.statusLabelFont(myFont!)
+        SKActivityIndicator.spinnerStyle(.spinningFadeCircle)
+        
+        listView.delegate = self
+        listView.dataSource = self
+        collectionTableView.delegate = self
+        collectionTableView.dataSource = self
+        AYNetworkManager.sharedInstance.delegate = self
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.requestTable(bookAPI)
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,17 +98,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 // MARK - Request
     func requestTable(_ api: AYBookAPI) {
-        
+                
         if api.isListEndPage == false {
+            SKActivityIndicator.show("Loading..")
             bookListViewModel?.request(pageNumber: api.listPage, itemCount: api.listCount, completionHandler: { [unowned self](isSuccess) in
                 DispatchQueue.main.async {
-                    if isSuccess {
                     self.listView.reloadData()
-                    }
-                    
+                    SKActivityIndicator.dismiss()
+
                 }
             })
         }
+        
     }
     
      func requestCollection(_ api: AYBookAPI) {
@@ -156,6 +172,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         case listView:
                 detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
                 AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!)
+            
         case collectionTableView:
             
             break
@@ -189,24 +206,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-//        let sourceViewHeight = scrollView.contentOffset.y + scrollView.frame.size.height
-//        let contentSize = scrollView.contentSize.height + CGFloat(100.0)
-//
-//        if sourceViewHeight < contentSize {
-//            switch scrollView {
-//
-//            case listView:
-//             requestTable(bookAPI.increaseParameter(type: .list))
-//
-//            case collectionTableView:
-//                requestCollection(bookAPI.increaseParameter(type: .collection))
-//
-//            default:
-//                break
-//            }
-//
-//        }
-        
+        let sourceViewHeight = scrollView.contentOffset.y + scrollView.frame.size.height
+        let contentSize = scrollView.contentSize.height + CGFloat(100.0)
+
+        if sourceViewHeight < contentSize {
+            if AYNetworkManager.sharedInstance.isLoading == false {
+                 requestTable(bookAPI.increaseParameter(type: .list))
+            }
+        }
+    
 }
 
 // MARK - Button Method
@@ -251,22 +259,26 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
 // MARK - AYNetworkManager delegate Method
     
     func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64) {
-        print(didWriteBytes, " ", totalBytesExpectedToWrite)
+        let downloadRatio = Float(didWriteBytes) / Float(totalBytesExpectedToWrite)
+        
+    }
+    
+    func startDataTask(_ didWriteBytes: Int64, totalBytes: Int64) {
+        
     }
     
     func finishDownloadData(to location: String) {
-        print(location)
+        
                             DispatchQueue.main.async {
                                 let document: PDFKDocument = PDFKDocument(contentsOfFile: location, password: nil)
                                 let viewer = PDFKBasicPDFViewer.init(document: document)!
                                 viewer.loadDocument(document)
-                                viewer.enableBookmarks = false
-                                viewer.enableThumbnailSlider = false
+                                viewer.enableBookmarks = true
+                                viewer.enableThumbnailSlider = true
 
                                 self.addChildViewController(viewer)
                                 self.navigationController?.pushViewController(viewer, animated: true)
                             }
-
 
     }
     

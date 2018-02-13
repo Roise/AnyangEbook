@@ -59,26 +59,34 @@
                                     <constraint firstAttribute="height" constant="60" id="sme-Jd-S9b"/>
                                 </constraints>
                             </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EhV-7Y-ik9">
+                                <rect key="frame" x="100" y="332" width="175" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lEy-74-kz8" firstAttribute="top" secondItem="89g-tO-OCO" secondAttribute="bottom" id="0SC-Zr-lAF"/>
                             <constraint firstItem="9wk-eJ-wUg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="1P4-bH-ggU"/>
                             <constraint firstItem="lEy-74-kz8" firstAttribute="top" secondItem="XgL-YM-giG" secondAttribute="bottom" id="4Uv-0p-AdT"/>
+                            <constraint firstItem="lEy-74-kz8" firstAttribute="top" secondItem="EhV-7Y-ik9" secondAttribute="bottom" constant="333" id="8tB-AR-WQN"/>
                             <constraint firstItem="89g-tO-OCO" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="bottom" id="Ov0-cf-dcf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9wk-eJ-wUg" secondAttribute="trailing" id="WDz-n9-VbX"/>
                             <constraint firstAttribute="trailing" secondItem="89g-tO-OCO" secondAttribute="trailing" id="c7F-MK-DdU"/>
+                            <constraint firstItem="EhV-7Y-ik9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="eG0-hV-lq2"/>
                             <constraint firstItem="XgL-YM-giG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ipq-1P-tcY"/>
+                            <constraint firstAttribute="trailing" secondItem="EhV-7Y-ik9" secondAttribute="trailing" constant="100" id="lip-O7-zGC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XgL-YM-giG" secondAttribute="trailing" constant="-16" id="oKk-a6-mlY"/>
                             <constraint firstItem="9wk-eJ-wUg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oeC-VJ-zgd"/>
                             <constraint firstItem="89g-tO-OCO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rhM-MA-jdb"/>
                             <constraint firstItem="XgL-YM-giG" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="bottom" id="tri-PS-s00"/>
+                            <constraint firstItem="EhV-7Y-ik9" firstAttribute="top" secondItem="9wk-eJ-wUg" secondAttribute="bottom" constant="252" id="yDK-cY-YQX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JqC-fs-3dL"/>
                     <connections>
                         <outlet property="collectionTableView" destination="XgL-YM-giG" id="g92-b4-cfk"/>
                         <outlet property="listView" destination="89g-tO-OCO" id="swl-aC-LaQ"/>
+                        <outlet property="progressView" destination="EhV-7Y-ik9" id="0GP-UT-JUI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

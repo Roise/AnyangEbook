@@ -149,6 +149,7 @@
     
     //Create the navigation bar.
     _navigationToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0)];
+    _navigationToolbar.backgroundColor = [UIColor redColor];
     _navigationToolbar.delegate = self;
     //Set this to no, cant have autoresizing masks and layout constraints at the same time.
     _navigationToolbar.translatesAutoresizingMaskIntoConstraints = NO;

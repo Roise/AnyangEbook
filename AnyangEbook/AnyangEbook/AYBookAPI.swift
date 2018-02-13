@@ -24,13 +24,14 @@ extension AYBookAPI {
         switch type {
             
         case .list:
-            self.listPage+=1
-            self.listCount+=3
             
-            if listPage == 3 {
-                isListEndPage = true
-            } else {
+            if listPage<3 {
+                self.listPage+=1
+                self.listCount+=3
                 isListEndPage = false
+            } else {
+                self.listPage = 3
+                isListEndPage = true
             }
             
             return self

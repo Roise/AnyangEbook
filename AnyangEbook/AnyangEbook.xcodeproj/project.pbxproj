@@ -18,6 +18,8 @@
 		187077E4200758A40045E0D4 /* AYEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E3200758A40045E0D4 /* AYEndPoint.swift */; };
 		1876D7C62011C840006C84A8 /* AYBookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */; };
 		1876D7C72011C840006C84A8 /* AYBookListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876D7C52011C840006C84A8 /* AYBookListTableViewCell.xib */; };
+		1883A7FD2032AFAA00F822E7 /* SKActivityIndicatorViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A7FB2032AFAA00F822E7 /* SKActivityIndicatorViewStyle.swift */; };
+		1883A7FE2032AFAA00F822E7 /* SKActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A7FC2032AFAA00F822E7 /* SKActivityIndicatorView.swift */; };
 		188F85222015B9250058C1FD /* AYCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F85202015B9250058C1FD /* AYCollectionTableViewCell.swift */; };
 		188F85232015B9250058C1FD /* AYCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188F85212015B9250058C1FD /* AYCollectionTableViewCell.xib */; };
 		188F85252015B9500058C1FD /* AYBookCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F85242015B9500058C1FD /* AYBookCollectionViewModel.swift */; };
@@ -43,6 +45,8 @@
 		187077E3200758A40045E0D4 /* AYEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYEndPoint.swift; path = Provider/AYEndPoint.swift; sourceTree = "<group>"; };
 		1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListTableViewCell.swift; path = Cell/AYBookListTableViewCell.swift; sourceTree = "<group>"; };
 		1876D7C52011C840006C84A8 /* AYBookListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AYBookListTableViewCell.xib; path = Cell/AYBookListTableViewCell.xib; sourceTree = "<group>"; };
+		1883A7FB2032AFAA00F822E7 /* SKActivityIndicatorViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKActivityIndicatorViewStyle.swift; path = Library/SKActivityIndicatorView/Classes/SKActivityIndicatorViewStyle.swift; sourceTree = "<group>"; };
+		1883A7FC2032AFAA00F822E7 /* SKActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SKActivityIndicatorView.swift; path = Library/SKActivityIndicatorView/Classes/SKActivityIndicatorView.swift; sourceTree = "<group>"; };
 		188F85202015B9250058C1FD /* AYCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYCollectionTableViewCell.swift; path = Cell/AYCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		188F85212015B9250058C1FD /* AYCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AYCollectionTableViewCell.xib; path = Cell/AYCollectionTableViewCell.xib; sourceTree = "<group>"; };
 		188F85242015B9500058C1FD /* AYBookCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookCollectionViewModel.swift; path = Model/AYBookCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 		F6054387201CAF0300AA67DE /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				1883A7FC2032AFAA00F822E7 /* SKActivityIndicatorView.swift */,
+				1883A7FB2032AFAA00F822E7 /* SKActivityIndicatorViewStyle.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -349,10 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F01720200DE7680096F365 /* AYBookListViewModel.swift in Sources */,
+				1883A7FE2032AFAA00F822E7 /* SKActivityIndicatorView.swift in Sources */,
 				183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */,
 				188F85222015B9250058C1FD /* AYCollectionTableViewCell.swift in Sources */,
 				188F85252015B9500058C1FD /* AYBookCollectionViewModel.swift in Sources */,
 				187077E2200758140045E0D4 /* AYBookAPI.swift in Sources */,
+				1883A7FD2032AFAA00F822E7 /* SKActivityIndicatorViewStyle.swift in Sources */,
 				71820C781DFEF9B000F018D6 /* AppDelegate.swift in Sources */,
 				1827E2942005E3CB001907B5 /* AYPDFViewController.swift in Sources */,
 				1827E28E2005E342001907B5 /* AYQRViewController.swift in Sources */,

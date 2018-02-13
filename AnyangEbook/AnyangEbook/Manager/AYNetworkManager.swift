@@ -84,6 +84,7 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
         //Todo CRUDMethod
         
         isLoading = true
+        print(url)
         
         sessionTask = (session?.dataTask(with: URL.init(string: url)!, completionHandler: {[unowned self] (data, response, error) in
             
