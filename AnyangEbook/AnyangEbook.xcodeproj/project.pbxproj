@@ -13,6 +13,7 @@
 		1827E2902005E383001907B5 /* AYSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827E28F2005E383001907B5 /* AYSettingViewController.swift */; };
 		183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E6C4C2004BEF80084A54A /* MainViewController.swift */; };
 		185AF162202452E700555792 /* M13PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185AF163202452E700555792 /* M13PDFKit.framework */; };
+		186EA0F5203C0263006FCB2C /* AYLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186EA0F4203C0262006FCB2C /* AYLibraryViewController.swift */; };
 		187077E2200758140045E0D4 /* AYBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E1200758140045E0D4 /* AYBookAPI.swift */; };
 		187077E4200758A40045E0D4 /* AYEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187077E3200758A40045E0D4 /* AYEndPoint.swift */; };
 		1876D7C62011C840006C84A8 /* AYBookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */; };
@@ -39,6 +40,7 @@
 		1827E28F2005E383001907B5 /* AYSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYSettingViewController.swift; path = ViewController/AYSettingViewController.swift; sourceTree = "<group>"; };
 		183E6C4C2004BEF80084A54A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
 		185AF163202452E700555792 /* M13PDFKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = M13PDFKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		186EA0F4203C0262006FCB2C /* AYLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AYLibraryViewController.swift; path = ViewController/AYLibraryViewController.swift; sourceTree = "<group>"; };
 		187077E1200758140045E0D4 /* AYBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AYBookAPI.swift; sourceTree = "<group>"; };
 		187077E3200758A40045E0D4 /* AYEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYEndPoint.swift; path = Provider/AYEndPoint.swift; sourceTree = "<group>"; };
 		1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListTableViewCell.swift; path = Cell/AYBookListTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		183E6C422004B93B0084A54A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				186EA0F4203C0262006FCB2C /* AYLibraryViewController.swift */,
 				183E6C4C2004BEF80084A54A /* MainViewController.swift */,
 				1827E28D2005E342001907B5 /* AYQRViewController.swift */,
 				1827E28F2005E383001907B5 /* AYSettingViewController.swift */,
@@ -360,6 +363,7 @@
 				18F8ED8C203411DC009EA21B /* SKActivityIndicatorViewStyle.swift in Sources */,
 				71820C781DFEF9B000F018D6 /* AppDelegate.swift in Sources */,
 				1827E28E2005E342001907B5 /* AYQRViewController.swift in Sources */,
+				186EA0F5203C0263006FCB2C /* AYLibraryViewController.swift in Sources */,
 				1827E2902005E383001907B5 /* AYSettingViewController.swift in Sources */,
 				1876D7C62011C840006C84A8 /* AYBookListTableViewCell.swift in Sources */,
 				187077E4200758A40045E0D4 /* AYEndPoint.swift in Sources */,
