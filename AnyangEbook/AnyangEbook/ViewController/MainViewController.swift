@@ -37,23 +37,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         listView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         collectionTableView.register(UINib.init(nibName: "AYCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "collectionCell")
-    
         bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
         bookCollectionViewModel = AYBookCollectionViewModel.init(endPoint: endPoint)
-        
         collectionTableView.isHidden = true
         listView.isHidden = false
         
-        // default is darkGray
-        SKActivityIndicator.spinnerColor(UIColor.darkGray)
-        
-        // default is black
-        SKActivityIndicator.statusTextColor(UIColor.black)
-        
-        // default is System Font
-        let myFont = UIFont(name: "AvenirNext-DemiBold", size: 18)
-        SKActivityIndicator.statusLabelFont(myFont!)
-        SKActivityIndicator.spinnerStyle(.spinningFadeCircle)
+//        // default is darkGray
+//        SKActivityIndicator.spinnerColor(UIColor.darkGray)
+//
+//        // default is black
+//        SKActivityIndicator.statusTextColor(UIColor.black)
+//
+//        // default is System Font
+//        let myFont = UIFont(name: "AvenirNext-DemiBold", size: 18)
+//        SKActivityIndicator.statusLabelFont(myFont!)
+//        SKActivityIndicator.spinnerStyle(.spinningFadeCircle)
         
         listView.delegate = self
         listView.dataSource = self
@@ -66,7 +64,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
         self.requestTable(bookAPI)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -254,6 +262,10 @@ func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
     @IBAction func modalShareMenu(_ sender: Any) {
     
+    }
+    @IBAction func pushLibrary(_ sender: Any) {
+        let libraryViewController = AYLibraryViewController()
+        self.navigationController?.pushViewController(libraryViewController, animated: true)
     }
     
 // MARK - AYNetworkManager delegate Method
