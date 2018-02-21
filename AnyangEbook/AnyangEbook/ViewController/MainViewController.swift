@@ -237,11 +237,9 @@ extension MainViewController: AYNetworkManagerDelegate {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK - TableView Method
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == listView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as? AYBookListTableViewCell
             cell?.setup(book: (bookListViewModel?.bookList[indexPath.row])!)
             return cell!
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
