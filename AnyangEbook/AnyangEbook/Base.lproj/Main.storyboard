@@ -44,26 +44,30 @@
                             <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wk-eJ-wUg" userLabel="TopView">
                                 <rect key="frame" x="16" y="20" width="343" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxF-ku-tz9">
-                                        <rect key="frame" x="16" y="15" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxF-ku-tz9">
+                                        <rect key="frame" x="8" y="14" width="55" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="책장"/>
+                                        <state key="normal" image="bookshelf_c"/>
                                         <connections>
                                             <segue destination="qBs-Rf-FAq" kind="show" identifier="Library" id="K73-bF-bnm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-WD-sWT">
-                                        <rect key="frame" x="255" y="14" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-WD-sWT">
+                                        <rect key="frame" x="269" y="18" width="25" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="list_c"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg7-OV-0Wq">
-                                        <rect key="frame" x="309" y="14" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg7-OV-0Wq">
+                                        <rect key="frame" x="311" y="18" width="24" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="some_c"/>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="anyang_logo" translatesAutoresizingMaskIntoConstraints="NO" id="1Uy-oq-Z7O">
+                                        <rect key="frame" x="126" y="14" width="91" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="sme-Jd-S9b"/>
                                 </constraints>
@@ -97,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="374" y="-788"/>
+            <point key="canvasLocation" x="373.60000000000002" y="-788.45577211394311"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="pHz-Nm-6gW">
@@ -346,12 +350,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="anyang_logo" width="180" height="46"/>
         <image name="bg_ipad" width="768" height="1024"/>
+        <image name="bookshelf_c" width="70" height="45"/>
         <image name="btn_3" width="25" height="18"/>
         <image name="btndown" width="105" height="51"/>
         <image name="btnshare" width="105" height="51"/>
         <image name="btnview" width="103" height="51"/>
         <image name="ebooklistbg" width="320" height="143"/>
+        <image name="list_c" width="41" height="38"/>
+        <image name="some_c" width="37" height="37"/>
         <image name="titlebar" width="768" height="50"/>
         <image name="titlebg" width="111" height="38"/>
     </resources>

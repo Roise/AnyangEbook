@@ -35,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loading" width="800" height="1280"/>
+        <image name="loading" width="720" height="1280"/>
     </resources>
 </document>
