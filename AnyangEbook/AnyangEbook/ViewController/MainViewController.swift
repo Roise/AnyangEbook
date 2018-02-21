@@ -15,11 +15,12 @@ public enum CellType: Int {
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var progressView: UIProgressView!
-    
     public enum Menu {
         case setting, QR, pdf
     }
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var listView: UITableView!
     
@@ -35,11 +36,17 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         listView.register(UINib.init(nibName: "AYBookListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
-        //collectionTableView.register(UINib.init(nibName: "AYCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "collectionCell")
+        collectionView.register(UINib.init(nibName: "AYBookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
+        
         bookListViewModel = AYBookListViewModel.init(endPoint: endPoint)
-        bookCollectionViewModel = AYBookCollectionViewModel.init(endPoint: endPoint)
+        //bookCollectionViewModel = AYBookCollectionViewModel.init(endPoint: endPoint)
         
         listView.isHidden = false
+        collectionView.isHidden = true
+        
+        let collectionWidth = (((self.view.bounds.width - 30) - 20) / 2)
+        let collectionLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        collectionLayout?.itemSize = CGSize(width: collectionWidth, height: 270)
         
 //        // default is darkGray
 //        SKActivityIndicator.spinnerColor(UIColor.darkGray)
@@ -54,10 +61,11 @@ class MainViewController: UIViewController {
         
         listView.delegate = self
         listView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         AYNetworkManager.sharedInstance.delegate = self
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +102,6 @@ class MainViewController: UIViewController {
             
         case .pdf:
             break
-//            viewController = self.storyboard?.instantiateViewController(withIdentifier: "PDFViewController") as! AYPDFViewController
             
         }
         
@@ -110,8 +117,8 @@ class MainViewController: UIViewController {
             bookListViewModel?.request(pageNumber: api.listPage, itemCount: api.listCount, completionHandler: { [unowned self](isSuccess) in
                 DispatchQueue.main.async {
                     self.listView.reloadData()
+                    self.collectionView.reloadData()
                     SKActivityIndicator.dismiss()
-
                 }
             })
         }
@@ -127,7 +134,23 @@ class MainViewController: UIViewController {
     @IBAction func selectTableMode(_ sender: Any) {
         
         listView.isHidden = false
+        collectionView.isHidden = true
+        
+        if bookListViewModel?.bookList.count == 0 {
+            requestTable(bookAPI)
+        }
 
+    }
+    
+    @IBAction func selectCollectionMode(_ sender: Any) {
+        
+        listView.isHidden = true
+        collectionView.isHidden = false
+        
+        if bookListViewModel?.bookList.count == 0 {
+            requestTable(bookAPI)
+        }
+        
     }
     
     @IBAction func pushSettingMenu(_ sender: Any) {
@@ -151,16 +174,6 @@ class MainViewController: UIViewController {
         
     }
     
-    @IBAction func selectCollectionMode(_ sender: Any) {
-        
-        listView.isHidden = true
-        
-        if bookCollectionViewModel?.bookCollection.count == 0 {
-            requestCollection(bookAPI)
-        }
-        
-    }
-    
 //    @objc func pushItemToDetailView(_ sender: UIButtonSubClassing) {
 //        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
 //
@@ -170,18 +183,7 @@ class MainViewController: UIViewController {
 //    }
     
     func moreList(_ type: CellType, page: Int, count: Int ) {
-        
-        switch type {
-            
-        case .list:
             requestTable(bookAPI)
-            
-        case .collection:
-            requestCollection(bookAPI)
-            
-        default: break
-            
-        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -228,12 +230,28 @@ extension MainViewController: AYNetworkManagerDelegate {
         }
         
     }
-    
-    
-
 }
 
-// Extension TableView
+//MARK - Extension Collectionview
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (bookListViewModel?.bookList.count)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? AYBookCollectionViewCell
+        cell?.setupCell(with: (bookListViewModel?.bookList[indexPath.row])!)
+        
+        return cell!
+    }
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
+
+//MARK - Extension TableView
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK - TableView Method
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -243,12 +261,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if tableView == listView {
             return (bookListViewModel?.bookList.count)!
-        } else {
-            return (bookCollectionViewModel?.bookCollection.count)!
-        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -260,16 +273,24 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
-        
-        switch tableView {
-        case listView:
             detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
-            AYNetworkManager.sharedInstance.downloadPDF(url: (bookListViewModel?.bookList[indexPath.row].fileURL)!)
-        default:
-            break
+        
+        let alertController = UIAlertController.init(title: "Download", message: "다운로드를 진행하시겠습니까?", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction.init(title: "OK", style: .default) { [unowned self](action) in
+            
+            AYNetworkManager.sharedInstance.downloadPDF(url: (self.bookListViewModel?.bookList[indexPath.row].fileURL)!)
         }
+        let cancleAction = UIAlertAction.init(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancleAction)
+        
+        self.present(alertController, animated: true)
     }
     
 }
+
+
 
 
