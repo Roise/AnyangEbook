@@ -126,7 +126,6 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
         {
             let data = try Data.init(contentsOf: location)
             FileManager.default.createFile(atPath: finishedFliePath!, contents: data, attributes: nil)
-            print(finishedFliePath)
             delegate?.finishDownloadData(to: finishedFliePath!)
             
         } catch let error {
