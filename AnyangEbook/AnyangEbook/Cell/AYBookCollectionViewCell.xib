@@ -13,17 +13,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="gTV-IL-0wX" customClass="AYBookCollectionViewCell" customModule="AnyangEbook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="216" height="340"/>
+            <rect key="frame" x="0.0" y="0.0" width="216" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="216" height="340"/>
+                <rect key="frame" x="0.0" y="0.0" width="216" height="250"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qhl-lQ-wR2">
-                        <rect key="frame" x="0.0" y="0.0" width="216" height="242"/>
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="180"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="180" id="ltw-qm-ZVX"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrt-fx-hzA">
-                        <rect key="frame" x="0.0" y="292" width="216" height="21"/>
+                        <rect key="frame" x="0.0" y="180" width="216" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,19 +37,19 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Qhl-lQ-wR2" secondAttribute="trailing" id="3GB-gd-JbZ"/>
                 <constraint firstItem="vrt-fx-hzA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EiB-I3-ay4"/>
+                <constraint firstItem="vrt-fx-hzA" firstAttribute="top" secondItem="Qhl-lQ-wR2" secondAttribute="bottom" id="RkM-XC-jsO"/>
                 <constraint firstAttribute="trailing" secondItem="vrt-fx-hzA" secondAttribute="trailing" id="WPD-Mi-m3R"/>
-                <constraint firstItem="vrt-fx-hzA" firstAttribute="top" secondItem="Qhl-lQ-wR2" secondAttribute="bottom" constant="50" id="Xng-kj-6WG"/>
                 <constraint firstAttribute="bottom" secondItem="vrt-fx-hzA" secondAttribute="bottom" constant="27" id="e8A-TV-x18"/>
                 <constraint firstItem="Qhl-lQ-wR2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eOR-fV-nTv"/>
                 <constraint firstItem="Qhl-lQ-wR2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rKq-eq-15q"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="216" height="340"/>
+            <size key="customSize" width="216" height="250"/>
             <connections>
                 <outlet property="thumbnail" destination="Qhl-lQ-wR2" id="BGG-vD-yLl"/>
                 <outlet property="title" destination="vrt-fx-hzA" id="ai9-hF-iAh"/>
             </connections>
-            <point key="canvasLocation" x="-364" y="-183"/>
+            <point key="canvasLocation" x="-412" y="-229"/>
         </collectionViewCell>
     </objects>
 </document>

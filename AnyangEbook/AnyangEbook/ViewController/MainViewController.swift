@@ -64,7 +64,7 @@ class MainViewController: UIViewController {
         collectionView.dataSource = self
         
         progressView.isHidden = true
-//        progressView.layoutIfNeeded()
+
         
         AYNetworkManager.sharedInstance.delegate = self
     }
@@ -80,6 +80,7 @@ class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.progressView.progress = 0
+        self.progressView.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -267,7 +268,23 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
+        detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
         
+        let alertController = UIAlertController.init(title: "Download", message: "다운로드를 진행하시겠습니까?", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction.init(title: "OK", style: .default) { [unowned self](action) in
+            self.progressView.setCircleStrokeWidth(5)
+            self.progressView.progress = 0
+            self.progressView.isHidden = false
+            AYNetworkManager.sharedInstance.downloadPDF(url: (self.bookListViewModel?.bookList[indexPath.row].fileURL)!)
+        }
+        let cancleAction = UIAlertAction.init(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancleAction)
+        
+        self.present(alertController, animated: true)
     }
 }
 

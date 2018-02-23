@@ -10,9 +10,16 @@ import UIKit
 
 class AYSettingViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
+        self.tableView.register(UINib.init(nibName: "AYSettingTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingTableViewCell")
+        
+        self.navigationController?.navigationItem.title = "설정"
         // Do any additional setup after loading the view.
     }
 
@@ -21,11 +28,6 @@ class AYSettingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func popPrev(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
-    
-    }
     /*
     // MARK: - Navigation
 
@@ -36,4 +38,27 @@ class AYSettingViewController: UIViewController {
     }
     */
 
+}
+
+extension AYSettingViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55.0
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? AYSettingTableViewCell
+        cell?.title.text = "푸쉬알림"
+        cell?.switchBUtton.isOn = UserDefaults.standard.bool(forKey: "isPush")
+        cell?.selectionStyle = .none        
+        return cell!
+    }
+}
+
+extension AYSettingViewController: AYSettingCellDelegate {
+    func switchOnOff(sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "isPush")
+    }
 }
