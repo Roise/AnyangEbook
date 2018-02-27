@@ -28,16 +28,20 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     public var session: URLSession?
     public var isLoading = false
     public var finishedFliePath: String?
-    
     public var delegate: AYNetworkManagerDelegate?
+    public let context = AYCoreDataManager.shared.persistentContainer.viewContext
+    
+    public var entity = [Entity]()
  
     var bytesWritten: Int64 = 0
     var totalBytesExpectedToWrite: Int64 = 0
     var finishDownloadLocation: URL?
    
     override init() {
+        
         super.init()
         session = URLSession.init(configuration: .default, delegate: self, delegateQueue: nil)
+    
     }
     
     public func downloadPDF(url: String) {
@@ -49,8 +53,10 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
         let fileURL = url
         let splitURL = fileURL.split(separator: "/")
         let pdfFileName = splitURL[((splitURL.endIndex)-1)]
+        finishedFliePath = String(pdfFileName)
         
-        finishedFliePath = createdDataDirectoryPath()! + pdfFileName
+        //finishedFliePath = createdDataDirectoryPath()! + pdfFileName
+        
         
         downloadTask.resume()
     }
@@ -84,7 +90,6 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
         //Todo CRUDMethod
         
         isLoading = true
-        print(url)
         
         sessionTask = (session?.dataTask(with: URL.init(string: url)!, completionHandler: {[unowned self] (data, response, error) in
             
@@ -109,30 +114,23 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
-//        do {
-//            let data = try Data.init(contentsOf: URL.init(string: url)!)
-//            //let fileURL = self.createdDataPathURL(fileName)!
-//
-//            if FileManager.default.createFile(atPath: mainBundle + pdfFileName, contents: data, attributes: nil) {
-//
-//            } else {
-//                print("error")
-//            }
-//        } catch {
-//
-//        }
+        do {
+            entity = try context.fetch(Entity.fetchRequest())
+        } catch {
+            print("could not fetch request")
+        }
+        
+        let book = Entity(entity: Entity.entity(), insertInto: context)
         
         do
         {
             let data = try Data.init(contentsOf: location)
-            FileManager.default.createFile(atPath: finishedFliePath!, contents: data, attributes: nil)
+            //FileManager.default.createFile(atPath: finishedFliePath!, contents: data, attributes: nil)
             delegate?.finishDownloadData(to: finishedFliePath!)
-            
         } catch let error {
             print("copying error")
             print(error)
         }
-        
         
     }
     

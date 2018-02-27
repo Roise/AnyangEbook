@@ -18,7 +18,7 @@ class AYBookListTableViewCell: UITableViewCell {
     func setup(book: Book) {
 
         thumbnail.sd_setImage(with: URL.init(string: book.thumbnailURL)!, placeholderImage: nil, options: .continueInBackground) { (image, error, cachetype, url) in
-            
+         
         }
         
         title.text = book.title

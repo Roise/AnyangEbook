@@ -21,7 +21,9 @@
 		1876D7C62011C840006C84A8 /* AYBookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */; };
 		1876D7C72011C840006C84A8 /* AYBookListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876D7C52011C840006C84A8 /* AYBookListTableViewCell.xib */; };
 		188F85252015B9500058C1FD /* AYBookCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F85242015B9500058C1FD /* AYBookCollectionViewModel.swift */; };
+		1890D36C20452831003E8414 /* AYBookLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890D36B20452831003E8414 /* AYBookLibraryViewModel.swift */; };
 		189A4646203FAAEE00259617 /* AYDownloadDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 189A4644203FAAEE00259617 /* AYDownloadDataModel.xcdatamodeld */; };
+		189A4649203FD3D800259617 /* AYCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A4648203FD3D800259617 /* AYCoreDataManager.swift */; };
 		18B085202018203600088EAA /* AYDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0851F2018203600088EAA /* AYDetailViewController.swift */; };
 		18C7A22A203D4565008E1BF1 /* AYBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7A228203D4565008E1BF1 /* AYBookCollectionViewCell.swift */; };
 		18C7A22B203D4565008E1BF1 /* AYBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C7A229203D4565008E1BF1 /* AYBookCollectionViewCell.xib */; };
@@ -52,7 +54,9 @@
 		1876D7C42011C840006C84A8 /* AYBookListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListTableViewCell.swift; path = Cell/AYBookListTableViewCell.swift; sourceTree = "<group>"; };
 		1876D7C52011C840006C84A8 /* AYBookListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AYBookListTableViewCell.xib; path = Cell/AYBookListTableViewCell.xib; sourceTree = "<group>"; };
 		188F85242015B9500058C1FD /* AYBookCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookCollectionViewModel.swift; path = Model/AYBookCollectionViewModel.swift; sourceTree = "<group>"; };
+		1890D36B20452831003E8414 /* AYBookLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookLibraryViewModel.swift; path = Model/AYBookLibraryViewModel.swift; sourceTree = "<group>"; };
 		189A4645203FAAEE00259617 /* AYDownloadDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AYDownloadDataModel.xcdatamodel; sourceTree = "<group>"; };
+		189A4648203FD3D800259617 /* AYCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYCoreDataManager.swift; path = Manager/AYCoreDataManager.swift; sourceTree = "<group>"; };
 		18B0851F2018203600088EAA /* AYDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYDetailViewController.swift; path = ViewController/AYDetailViewController.swift; sourceTree = "<group>"; };
 		18C7A228203D4565008E1BF1 /* AYBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookCollectionViewCell.swift; path = Cell/AYBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		18C7A229203D4565008E1BF1 /* AYBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AYBookCollectionViewCell.xib; path = Cell/AYBookCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				18E04294200845C10065CA35 /* AYBook.swift */,
 				18F0171F200DE7680096F365 /* AYBookListViewModel.swift */,
 				188F85242015B9500058C1FD /* AYBookCollectionViewModel.swift */,
+				1890D36B20452831003E8414 /* AYBookLibraryViewModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				18106B9320086C0400D64842 /* AYNetworkManager.swift */,
+				189A4648203FD3D800259617 /* AYCoreDataManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -386,7 +392,9 @@
 				18E04295200845C10065CA35 /* AYBook.swift in Sources */,
 				18B085202018203600088EAA /* AYDetailViewController.swift in Sources */,
 				18106B9220086A8300D64842 /* AYPageDecoder.swift in Sources */,
+				189A4649203FD3D800259617 /* AYCoreDataManager.swift in Sources */,
 				1800499E203E821A00342C74 /* AYSettingTableViewCell.swift in Sources */,
+				1890D36C20452831003E8414 /* AYBookLibraryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +534,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JC5UT9MKLR;
 				INFOPLIST_FILE = AnyangEbook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jun.roi.anyang.magazine.AnyangEbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -542,7 +550,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JC5UT9MKLR;
 				INFOPLIST_FILE = AnyangEbook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jun.roi.anyang.magazine.AnyangEbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";

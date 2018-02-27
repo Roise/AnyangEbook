@@ -25,7 +25,6 @@ struct Book {
     let ebookQRURL: String
     let ebookQR2URL: String
     let bookType: String
-    let id: String
 }
 
 
