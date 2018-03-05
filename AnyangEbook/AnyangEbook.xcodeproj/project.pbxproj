@@ -27,7 +27,6 @@
 		18B085202018203600088EAA /* AYDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0851F2018203600088EAA /* AYDetailViewController.swift */; };
 		18C7A22A203D4565008E1BF1 /* AYBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7A228203D4565008E1BF1 /* AYBookCollectionViewCell.swift */; };
 		18C7A22B203D4565008E1BF1 /* AYBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C7A229203D4565008E1BF1 /* AYBookCollectionViewCell.xib */; };
-		18C7A22F203D88E2008E1BF1 /* BRCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7A22E203D88E2008E1BF1 /* BRCircularProgressView.swift */; };
 		18E04295200845C10065CA35 /* AYBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E04294200845C10065CA35 /* AYBook.swift */; };
 		18F01720200DE7680096F365 /* AYBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0171F200DE7680096F365 /* AYBookListViewModel.swift */; };
 		18F8ED8C203411DC009EA21B /* SKActivityIndicatorViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8ED8A203411DC009EA21B /* SKActivityIndicatorViewStyle.swift */; };
@@ -37,6 +36,7 @@
 		71820C7F1DFEF9B000F018D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71820C7E1DFEF9B000F018D6 /* Assets.xcassets */; };
 		71820C821DFEF9B000F018D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71820C801DFEF9B000F018D6 /* LaunchScreen.storyboard */; };
 		8FD8852FCC6514CA567536D9 /* Pods_AnyangEbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0C970300FA8A7CC2F6D853 /* Pods_AnyangEbook.framework */; };
+		F6696B1D204AFE210080FDBB /* BRCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6696B1C204AFE210080FDBB /* BRCircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +60,6 @@
 		18B0851F2018203600088EAA /* AYDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYDetailViewController.swift; path = ViewController/AYDetailViewController.swift; sourceTree = "<group>"; };
 		18C7A228203D4565008E1BF1 /* AYBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookCollectionViewCell.swift; path = Cell/AYBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		18C7A229203D4565008E1BF1 /* AYBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AYBookCollectionViewCell.xib; path = Cell/AYBookCollectionViewCell.xib; sourceTree = "<group>"; };
-		18C7A22E203D88E2008E1BF1 /* BRCircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BRCircularProgressView.swift; path = Library/BRCircularProgressView/BRCircularProgressView.swift; sourceTree = "<group>"; };
 		18CC906B20200D3A00332A3C /* PDFReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PDFReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E04294200845C10065CA35 /* AYBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBook.swift; path = Model/AYBook.swift; sourceTree = "<group>"; };
 		18F0171F200DE7680096F365 /* AYBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AYBookListViewModel.swift; path = Model/AYBookListViewModel.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		9F0E0A8ACA494597B816081F /* Pods-AnyangEbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyangEbook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyangEbook/Pods-AnyangEbook.debug.xcconfig"; sourceTree = "<group>"; };
 		A35FF2BAF7CF8CEBA187AFB7 /* Pods-AnyangEbook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyangEbook.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyangEbook/Pods-AnyangEbook.release.xcconfig"; sourceTree = "<group>"; };
 		EE0C970300FA8A7CC2F6D853 /* Pods_AnyangEbook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyangEbook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6696B1C204AFE210080FDBB /* BRCircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BRCircularProgressView.swift; path = Library/BRCircularProgressView/BRCircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +228,7 @@
 		F6054387201CAF0300AA67DE /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				18C7A22E203D88E2008E1BF1 /* BRCircularProgressView.swift */,
+				F6696B1C204AFE210080FDBB /* BRCircularProgressView.swift */,
 				18F8ED8B203411DC009EA21B /* SKActivityIndicatorView.swift */,
 				18F8ED8A203411DC009EA21B /* SKActivityIndicatorViewStyle.swift */,
 			);
@@ -377,7 +377,6 @@
 				18F8ED8D203411DC009EA21B /* SKActivityIndicatorView.swift in Sources */,
 				18C7A22A203D4565008E1BF1 /* AYBookCollectionViewCell.swift in Sources */,
 				183E6C4D2004BEF80084A54A /* MainViewController.swift in Sources */,
-				18C7A22F203D88E2008E1BF1 /* BRCircularProgressView.swift in Sources */,
 				188F85252015B9500058C1FD /* AYBookCollectionViewModel.swift in Sources */,
 				187077E2200758140045E0D4 /* AYBookAPI.swift in Sources */,
 				18F8ED8C203411DC009EA21B /* SKActivityIndicatorViewStyle.swift in Sources */,
@@ -386,6 +385,7 @@
 				186EA0F5203C0263006FCB2C /* AYLibraryViewController.swift in Sources */,
 				1827E2902005E383001907B5 /* AYSettingViewController.swift in Sources */,
 				1876D7C62011C840006C84A8 /* AYBookListTableViewCell.swift in Sources */,
+				F6696B1D204AFE210080FDBB /* BRCircularProgressView.swift in Sources */,
 				187077E4200758A40045E0D4 /* AYEndPoint.swift in Sources */,
 				189A4646203FAAEE00259617 /* AYDownloadDataModel.xcdatamodeld in Sources */,
 				18106B9420086C0400D64842 /* AYNetworkManager.swift in Sources */,
