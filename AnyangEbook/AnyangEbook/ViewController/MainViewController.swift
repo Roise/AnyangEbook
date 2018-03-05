@@ -64,7 +64,6 @@ class MainViewController: UIViewController {
         collectionView.dataSource = self
         
         progressView.isHidden = true
-
         
         AYNetworkManager.sharedInstance.delegate = self
     }
@@ -216,30 +215,32 @@ class MainViewController: UIViewController {
 
 extension MainViewController: AYNetworkManagerDelegate {
     
+    func finishDownloadData(book: Book) {
+        AYCoreDataManager.shared.addBook(book: book)
+    }
+    
     func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64) {
-        
         showProgressView(didWriteBytes, totalBytes: totalBytesExpectedToWrite)
-        
     }
     
     func startDataTask(_ didWriteBytes: Int64, totalBytes: Int64) {
         
     }
     
-    func finishDownloadData(to location: String) {
-        
-        DispatchQueue.main.async {
-            let document: PDFKDocument = PDFKDocument(contentsOfFile: location, password: nil)
-            let viewer = PDFKBasicPDFViewer.init(document: document)!
-            viewer.loadDocument(document)
-            viewer.enableBookmarks = true
-            viewer.enableThumbnailSlider = true
-            
-            self.addChildViewController(viewer)
-            self.navigationController?.pushViewController(viewer, animated: true)
-        }
-        
-    }
+//    func finishDownloadData(to location: String) {
+//
+//        DispatchQueue.main.async {
+//            let document: PDFKDocument = PDFKDocument(contentsOfFile: location, password: nil)
+//            let viewer = PDFKBasicPDFViewer.init(document: document)!
+//            viewer.loadDocument(document)
+//            viewer.enableBookmarks = true
+//            viewer.enableThumbnailSlider = true
+//
+//            self.addChildViewController(viewer)
+//            self.navigationController?.pushViewController(viewer, animated: true)
+//        }
+//
+//    }
     
     func showProgressView(_ didWriteBytes: Int64, totalBytes: Int64) {
         
@@ -269,14 +270,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
-        detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
-        
+        let book = bookListViewModel?.bookList[indexPath.row]
+        detailViewController?.book = book
         let alertController = UIAlertController.init(title: "Download", message: "다운로드를 진행하시겠습니까?", preferredStyle: .actionSheet)
         let okAction = UIAlertAction.init(title: "OK", style: .default) { [unowned self](action) in
             self.progressView.setCircleStrokeWidth(5)
             self.progressView.progress = 0
             self.progressView.isHidden = false
-            AYNetworkManager.sharedInstance.downloadPDF(url: (self.bookListViewModel?.bookList[indexPath.row].fileURL)!)
+            AYNetworkManager.sharedInstance.downloadPDF(book: book!)
         }
         let cancleAction = UIAlertAction.init(title: "Cancel", style: .cancel) { (action) in
             
@@ -312,16 +313,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? AYDetailViewController
-        detailViewController?.book = bookListViewModel?.bookList[indexPath.row]
+        let selectedBook = bookListViewModel?.bookList[indexPath.row]
+        detailViewController?.book = selectedBook
         
-        let alertController = UIAlertController.init(title: "Download", message: "다운로드를 진행하시겠습니까?", preferredStyle: .actionSheet)
-        let okAction = UIAlertAction.init(title: "OK", style: .default) { [unowned self](action) in
+        let alertController = UIAlertController(title: "Download", message: "다운로드를 진행하시겠습니까?", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self](action) in
             self.progressView.setCircleStrokeWidth(5)
             self.progressView.progress = 0
             self.progressView.isHidden = false
-            AYNetworkManager.sharedInstance.downloadPDF(url: (self.bookListViewModel?.bookList[indexPath.row].fileURL)!)
+            AYNetworkManager.sharedInstance.downloadPDF(book: selectedBook!)
         }
-        let cancleAction = UIAlertAction.init(title: "Cancel", style: .cancel) { (action) in
+        let cancleAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             
         }
         alertController.addAction(okAction)

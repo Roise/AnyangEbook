@@ -43,7 +43,8 @@ class AYBookListViewModel {
         
         let book = Book.init(categoryCode: data["category_code"] as! String, carTagCode: data["cat_tag_code"] as! String, title: data["title"] as! String, infoShelf: data["INFO_SHELF"] as! String, date: data["date"] as! String,
                              thumbnailURL: data["thumbnail"] as! String, fileURL: data["file"] as! String, fileXML: data["file_x"] as! String, firstside: data["firstside"] as! String, authorInfo: data["info_author"] as! String, dateInfo: data["info_date"] as! String,
-                             badge: data["badge"] as! String, chapter: data["chapter"] as! Array<Dictionary<String, Any>>, ebookQRURL: data["ebookQR"] as! String, ebookQR2URL: data["ebookQR2"] as! String, bookType: data["bookType"] as! String)
+                             badge: data["badge"] as! String, chapter: data["chapter"] as! Array<Dictionary<String, Any>>, ebookQRURL: data["ebookQR"] as! String, ebookQR2URL: data["ebookQR2"] as! String, bookType: data["bookType"] as! String, downloadBookData: nil)
+        
         return book
     }
     

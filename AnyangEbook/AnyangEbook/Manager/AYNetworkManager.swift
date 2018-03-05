@@ -17,7 +17,7 @@ enum CRUDMethod {
 
 protocol AYNetworkManagerDelegate: NSObjectProtocol {
     func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64)
-    func finishDownloadData(to location: String)
+    func finishDownloadData(book: Book)
 }
 
 class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
@@ -29,10 +29,8 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     public var isLoading = false
     public var finishedFliePath: String?
     public var delegate: AYNetworkManagerDelegate?
-    public let context = AYCoreDataManager.shared.persistentContainer.viewContext
+    public var selectedBook: Book?
     
-    public var entity = [Entity]()
- 
     var bytesWritten: Int64 = 0
     var totalBytesExpectedToWrite: Int64 = 0
     var finishDownloadLocation: URL?
@@ -44,20 +42,15 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     
     }
     
-    public func downloadPDF(url: String) {
-        
-        downloadTask = (session?.downloadTask(with: URLRequest.init(url: URL.init(string: url)!,
+    public func downloadPDF(book: Book) {
+        selectedBook = book
+        let url = selectedBook?.fileURL
+        downloadTask = (session?.downloadTask(with: URLRequest(url: URL(string: url!)!,
                                                                     cachePolicy: .useProtocolCachePolicy,
                                                                     timeoutInterval: 60)))!
-        
-        let fileURL = url
-        let splitURL = fileURL.split(separator: "/")
-        let pdfFileName = splitURL[((splitURL.endIndex)-1)]
+        let splitURL = url?.split(separator: "/")
+        let pdfFileName = splitURL![((splitURL?.endIndex)!-1)]
         finishedFliePath = String(pdfFileName)
-        
-        //finishedFliePath = createdDataDirectoryPath()! + pdfFileName
-        
-        
         downloadTask.resume()
     }
     
@@ -114,24 +107,14 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
-        do {
-            entity = try context.fetch(Entity.fetchRequest())
-        } catch {
-            print("could not fetch request")
-        }
-        
-        let book = Entity(entity: Entity.entity(), insertInto: context)
-        
         do
         {
             let data = try Data.init(contentsOf: location)
-            //FileManager.default.createFile(atPath: finishedFliePath!, contents: data, attributes: nil)
-            delegate?.finishDownloadData(to: finishedFliePath!)
+            selectedBook?.downloadBookData = data
+            delegate?.finishDownloadData(book: selectedBook!)
         } catch let error {
-            print("copying error")
-            print(error)
+            print("copying error \(error.localizedDescription)")
         }
-        
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
