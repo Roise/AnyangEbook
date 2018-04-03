@@ -17,7 +17,8 @@ enum CRUDMethod {
 
 protocol AYNetworkManagerDelegate: NSObjectProtocol {
     func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64)
-    func finishDownloadData(book: Book)
+ //   func finishDownloadData(book: Book)
+    func finishDownloadData(to location: String)
 }
 
 class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate {
@@ -50,11 +51,12 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
                                                                     timeoutInterval: 60)))!
         let splitURL = url?.split(separator: "/")
         let pdfFileName = splitURL![((splitURL?.endIndex)!-1)]
-        finishedFliePath = String(pdfFileName)
+        finishedFliePath = createdDataDirectoryPath(String(pdfFileName))
+        
         downloadTask.resume()
     }
     
-    private func createdDataDirectoryPath() -> String? {
+    private func createdDataDirectoryPath(_ fileName: String) -> String? {
         
         let bundleID = Bundle.main.bundleIdentifier
         let fileManager = FileManager.default
@@ -68,12 +70,13 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
             dirPath = appSupportDir[0].appendingPathComponent(bundleID!)
         }
         
-        let filePath = (dirPath?.path)!
+        
         do {            
-            try fileManager.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
-            
+            try fileManager.createDirectory(atPath: (dirPath?.path)!, withIntermediateDirectories: true, attributes: nil)
+            let filePath = (dirPath?.path)! + fileName
             return filePath
-        } catch {
+        } catch let error {
+            print("\(error.localizedDescription)")
             return nil
         }
     }
@@ -111,7 +114,9 @@ class AYNetworkManager: NSObject, URLSessionDelegate, URLSessionDownloadDelegate
         {
             let data = try Data.init(contentsOf: location)
             selectedBook?.downloadBookData = data
-            delegate?.finishDownloadData(book: selectedBook!)
+         //   delegate?.finishDownloadData(book: selectedBook!)
+            FileManager.default.createFile(atPath: finishedFliePath!, contents: data, attributes: nil)
+            delegate?.finishDownloadData(to: finishedFliePath!)
         } catch let error {
             print("copying error \(error.localizedDescription)")
         }

@@ -215,9 +215,9 @@ class MainViewController: UIViewController {
 
 extension MainViewController: AYNetworkManagerDelegate {
     
-    func finishDownloadData(book: Book) {
-        AYCoreDataManager.shared.addBook(book: book)
-    }
+//    func finishDownloadData(book: Book) {
+//        //AYCoreDataManager.shared.addBook(book: book)
+//    }
     
     func estimateDownloadDataBytes(_ didWriteBytes: Int64, totalBytesExpectedToWrite: Int64) {
         showProgressView(didWriteBytes, totalBytes: totalBytesExpectedToWrite)
@@ -227,20 +227,20 @@ extension MainViewController: AYNetworkManagerDelegate {
         
     }
     
-//    func finishDownloadData(to location: String) {
-//
-//        DispatchQueue.main.async {
-//            let document: PDFKDocument = PDFKDocument(contentsOfFile: location, password: nil)
-//            let viewer = PDFKBasicPDFViewer.init(document: document)!
-//            viewer.loadDocument(document)
-//            viewer.enableBookmarks = true
-//            viewer.enableThumbnailSlider = true
-//
-//            self.addChildViewController(viewer)
-//            self.navigationController?.pushViewController(viewer, animated: true)
-//        }
-//
-//    }
+    func finishDownloadData(to location: String) {
+
+        DispatchQueue.main.async {
+            let document: PDFKDocument = PDFKDocument(contentsOfFile: location, password: nil)
+            let viewer = PDFKBasicPDFViewer.init(document: document)!
+            viewer.loadDocument(document)
+            viewer.enableBookmarks = true
+            viewer.enableThumbnailSlider = true
+
+            self.addChildViewController(viewer)
+            self.navigationController?.pushViewController(viewer, animated: true)
+        }
+
+    }
     
     func showProgressView(_ didWriteBytes: Int64, totalBytes: Int64) {
         
